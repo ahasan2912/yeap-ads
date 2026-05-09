@@ -62,11 +62,10 @@ const OTPSending = () => {
         }
 
         if (otp.length === 6) {
-            const res = await handleSendOTPVerification({
+            await handleSendOTPVerification({
                 otp: Number(otp),
                 email: targetEmail
             });
-            console.log(res);
         } else {
             toast.error('Please fill up verification code');
         }
@@ -79,8 +78,6 @@ const OTPSending = () => {
             .toString()
             .padStart(2, "0")}`;
     };
-
-    console.log(user);
     return (
         <div className="flex flex-col lg:flex-row min-h-screen">
             <div

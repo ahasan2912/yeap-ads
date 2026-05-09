@@ -7,6 +7,7 @@ import Charts from './chart/Charts';
 import { useGetVendorDetailsQuery } from '../../../features/shop/shopApi';
 import { DealCardSkeleton } from '../../../components/skeleton/DealCardSkeleton';
 import { useGsapAnimations } from '../../../hooks/useGsapAnimations';
+import PaymentHistory from '../../dashboard/verdor-dashboard/payment/PaymentHistory';
 
 const CreatedShop = () => {
   const { user } = useSelector((state) => state.auth);
@@ -45,6 +46,10 @@ const CreatedShop = () => {
         {/* Chart Section */}
         <div data-animate="fade-up">
           <Charts />
+        </div>
+        {/* payment history */}
+        <div data-animate="fade-up">
+          <PaymentHistory />
         </div>
         {/* Deals Section */}
         <div data-animate="fade-up">

@@ -46,6 +46,7 @@ const VendorCreateDeal = lazy(() => import("../pages/dashboard/verdor-dashboard/
 const CreateDealPlan = lazy(() => import("../pages/dashboard/verdor-dashboard/created-deal/CreateDealPlan"));
 // const PaymentSuccess = lazy(() => import("../pages/dashboard/verdor-dashboard/payment/PaymentSuccess"));
 const PaymentCancel = lazy(() => import("../pages/dashboard/verdor-dashboard/payment/PaymentCancel"));
+const PaymentHistory = lazy(() => import("../pages/dashboard/verdor-dashboard/payment/PaymentHistory"));
 const VendorEditDeal = lazy(() => import("../pages/dashboard/verdor-dashboard/edit-deal/VendorEditDeal"));
 
 // Vendor & Other Pages
@@ -150,6 +151,8 @@ function AppRoutes() {
               <Route path="/show-outlets" element={<ShowOutlets />} />
               <Route path="/show-outlets/:id" element={<ShowOutlets />} />
               <Route path="/all-top-views" element={<AllTopViewsDeal />} />
+              <Route path="/payment" element={<PaymentHistory />} />
+              <Route path="/payment-history" element={<PaymentHistory />} />
               <Route path="/payment_success" element={<PaymentSuccess />} />
               <Route path="/payment_cancel" element={<PaymentCancel />} />
             </Route>

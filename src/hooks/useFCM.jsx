@@ -20,6 +20,5 @@ export const requestPermissionAndGetToken = async () => {
         }
     } catch (error) {
         console.error("Error getting token:", error);
-        toast.error("Error getting token.");
     }
 };

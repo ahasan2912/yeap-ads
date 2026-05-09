@@ -4,7 +4,6 @@ import { userLoggedIn } from "./authSlice";
 
 export const saveTokensAndFetchUser = async (tokens, dispatch) => {
   const { accessToken, refreshToken } = tokens;
-  console.log(accessToken, refreshToken);
   Cookies.set("accessToken", accessToken, {
     expires: 5,
     secure: false,

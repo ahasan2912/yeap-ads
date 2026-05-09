@@ -7,17 +7,31 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
   const [activeTab, setActiveTab] = useState('coupon');
   const [copied, setCopied] = useState(false);
 
+  const { title, reguler_price, discount, coupon_option, coupon } = deal?.data || {};
+  const { regularPrice, finalPrice, discount: dealDiscount, savedAmount, hasDiscount } = getDealPricing(reguler_price, discount);
+
+  const normalizeRedeemValue = (value) => typeof value === 'string' ? value.trim() : value;
+  const couponCode = normalizeRedeemValue(coupon);
+  const qrImage = normalizeRedeemValue(coupon_option?.qr);
+  const barcodeImage = normalizeRedeemValue(coupon_option?.upc);
+
+  const availableTabs = [
+    couponCode && { key: 'coupon', label: 'Coupon' },
+    qrImage && { key: 'qr', label: 'QR' },
+    barcodeImage && { key: 'barcode', label: 'Barcode' },
+  ].filter(Boolean);
+
+  const activeRedemptionTab = availableTabs.some((tab) => tab.key === activeTab)
+    ? activeTab
+    : availableTabs[0]?.key;
+
   if (!isOpen || typeof document === 'undefined') return null;
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(coupon || "");
+    navigator.clipboard.writeText(String(couponCode || ""));
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  const { title, reguler_price, discount, coupon_option, coupon } = deal?.data || {};
-  const { regularPrice, finalPrice, discount: dealDiscount, savedAmount, hasDiscount } = getDealPricing(reguler_price, discount);
-  
 
   return createPortal(
     <div className="fixed inset-0 z-9999 flex min-h-dvh items-center justify-center overflow-y-auto p-4 sm:p-6">
@@ -68,29 +82,31 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
               </p>
             )}
           </div>
-          <div className="flex bg-gray-100/80 p-1.5 rounded-full w-full mb-8 border border-gray-200">
-            {['coupon', 'QR', 'barcode'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex-1 py-2.5 cursor-pointer rounded-full text-sm font-extrabold uppercase tracking-wider transition-all duration-200 ${activeTab === tab
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'text-gray-400 hover:text-gray-600'
-                  }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+          {availableTabs.length > 0 && (
+            <div className="flex bg-gray-100/80 p-1.5 rounded-full w-full mb-8 border border-gray-200">
+              {availableTabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`flex-1 py-2.5 cursor-pointer rounded-full text-sm font-extrabold uppercase tracking-wider transition-all duration-200 ${activeRedemptionTab === tab.key
+                    ? 'bg-primary text-white shadow-lg'
+                    : 'text-gray-400 hover:text-gray-600'
+                    }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Content Area */}
           <div className="w-full min-h-30 flex flex-col items-center justify-center bg-gray-50/50 rounded-3xl border border-dashed border-gray-200 p-4">
-            {activeTab === 'coupon' && (
+            {activeRedemptionTab === 'coupon' && (
               <div className="w-full animate-in fade-in slide-in-from-bottom-2">
                 <div className="bg-[#e6f7f8] border-2 border-[#4dbbc4]/30 rounded-2xl p-6 text-center">
                   <span className="block text-xs text-primary font-bold mb-2 uppercase tracking-widest">Promo Code</span>
                   <h3 className="text-4xl font-black text-gray-800 mb-5 tracking-tighter">
-                    {coupon}
+                    {couponCode}
                   </h3>
                   <button
                     onClick={handleCopy}
@@ -104,28 +120,34 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
               </div>
             )}
 
-            {activeTab === 'QR' && (
+            {activeRedemptionTab === 'qr' && (
               <div className="p-4 bg-white rounded-2xl shadow-sm border animate-in zoom-in-95 duration-200">
                 <img
-                  src={`${coupon_option?.qr}`}
+                  src={`${qrImage}`}
                   alt="Redemption QR"
                   className="w-full max-h-32 object-contain"
                 />
               </div>
             )}
 
-            {activeTab === 'barcode' && (
+            {activeRedemptionTab === 'barcode' && (
               <div className="p-4 bg-white rounded-2xl shadow-sm border animate-in zoom-in-95 duration-200">
                 <img
-                  src={`${coupon_option?.upc}`}
-                  alt="Redemption QR"
+                  src={`${barcodeImage}`}
+                  alt="Redemption barcode"
                   className="w-full max-h-32  object-contain"
                 />
               </div>
             )}
+
+            {!activeRedemptionTab && (
+              <p className="text-sm font-medium text-slate-500">
+                No coupon option is available for this deal.
+              </p>
+            )}
           </div>
 
-          {activeTab === 'coupon' && (
+          {activeRedemptionTab === 'coupon' && (
             <p className="text-gray-400 text-xs mt-6 font-medium">
               Present this code at the checkout counter.
             </p>

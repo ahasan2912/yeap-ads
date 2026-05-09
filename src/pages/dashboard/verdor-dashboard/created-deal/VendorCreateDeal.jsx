@@ -92,6 +92,8 @@ const VendorCreateDeal = () => {
     const finalPrice = isFinalPriceOnly
         ? Number(watchFinalPriceValue) || 0
         : calculatedPricing.finalPrice;
+    const hasRegularPriceValue = watchRegularPrice !== "" && watchRegularPrice !== undefined && watchRegularPrice !== null;
+    const calculatedFinalPriceValue = hasRegularPriceValue ? `$${finalPrice.toFixed(2)}` : "";
     const disabledPricingInputClasses = "disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-400";
 
     useEffect(() => {
@@ -101,7 +103,10 @@ const VendorCreateDeal = () => {
 
         const currentFinalPriceValue = getValues("finalPriceValue");
 
-        if (currentFinalPriceValue !== "" && currentFinalPriceValue !== undefined && currentFinalPriceValue !== null) {
+        if (
+            !hasRegularPriceValue ||
+            (currentFinalPriceValue !== "" && currentFinalPriceValue !== undefined && currentFinalPriceValue !== null)
+        ) {
             return;
         }
 
@@ -109,7 +114,7 @@ const VendorCreateDeal = () => {
             shouldDirty: false,
             shouldValidate: false,
         });
-    }, [calculatedPricing.finalPrice, clearErrors, getValues, isFinalPriceOnly, setValue]);
+    }, [calculatedPricing.finalPrice, clearErrors, getValues, hasRegularPriceValue, isFinalPriceOnly, setValue]);
 
     if (shopLoading || categoryLoading) {
         return <AddDealSkeleton />
@@ -236,22 +241,6 @@ const VendorCreateDeal = () => {
 
                         <div className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
                             <h2 className="text-xl font-bold text-primary">Deal Pricing</h2>
-                            <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                                <input
-                                    type="checkbox"
-                                    {...register("finalPriceOnly")}
-                                    className="mt-1 h-4 w-4 accent-primary"
-                                />
-
-                                <div className="space-y-1">
-                                    <span className="block text-sm font-semibold text-[#262626]">
-                                        Final Price Only
-                                    </span>
-                                    <p className="text-sm leading-6 text-slate-500">
-                                        Let the customer see a single final price and skip the regular price plus discount breakdown.
-                                    </p>
-                                </div>
-                            </label>
                             {/* Regular Price */}
                             <div className={isFinalPriceOnly ? "opacity-70" : ""}>
                                 <label className="block text-base text-[#262626] font-medium mb-2">
@@ -330,10 +319,26 @@ const VendorCreateDeal = () => {
 
                             {/* Final Price */}
                             <div>
-                                <label className="block text-base text-[#262626] font-medium mb-2">
+                                <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                                <input
+                                    type="checkbox"
+                                    {...register("finalPriceOnly")}
+                                    className="mt-1 h-4 w-4 accent-primary"
+                                />
+
+                                <div className="space-y-1">
+                                    <span className="block text-sm font-semibold text-[#262626]">
+                                        Final Price Only
+                                    </span>
+                                    <p className="text-sm leading-6 text-slate-500">
+                                        Let the customer see a single final price and skip the regular price plus discount breakdown.
+                                    </p>
+                                </div>
+                            </label>
+                                <label className="block text-base text-[#262626] font-medium my-2">
                                     {isFinalPriceOnly ? (
                                         <>
-                                            Final Price<span className="text-red-500">*</span>
+                                            Final Price not any discount<span className="text-red-500">*</span>
                                         </>
                                     ) : (
                                         <>
@@ -370,7 +375,7 @@ const VendorCreateDeal = () => {
                                         <input
                                             type="text"
                                             readOnly
-                                            value={`$${finalPrice.toFixed(2)}`}
+                                            value={calculatedFinalPriceValue}
                                             className="w-full cursor-not-allowed rounded-full border border-slate-200 bg-slate-50 px-6 py-4 font-medium text-[#262626] outline-none"
                                         />
                                     )}

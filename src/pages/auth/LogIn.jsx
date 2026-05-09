@@ -16,7 +16,6 @@ const LogIn = () => {
     const params = new URLSearchParams(location.search);
     const accessToken = params.get("access");
     const refreshToken = params.get("refresh");
-
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [handleLogin, { isLoading }] = useHandleLoginMutation();
@@ -108,11 +107,11 @@ const LogIn = () => {
 
                     <div className="flex bg-[#F0F9FF] rounded-full mb-8  mx-auto">
                         <div className="w-full sm:px-1.5 py-1.5 flex">
-                            <Link to='/login' className="text-center w-full py-2 px-1 sm:px-4 rounded-full bg-primary hover:bg-secondary text-white text-sm sm:text-base font-medium cursor-pointer">
-                                Business sign-in
-                            </Link>
                             <Link to='/register' className="text-center w-full py-2 px-1 sm:px-4 rounded-full text-[#262626]  text-sm sm:text-base font-medium cursor-pointer">
                                 Business sign-up
+                            </Link>
+                             <Link to='/login' className="text-center w-full py-2 px-1 sm:px-4 rounded-full bg-primary hover:bg-secondary text-white text-sm sm:text-base font-medium cursor-pointer">
+                                Business sign-in
                             </Link>
                         </div>
                     </div>
