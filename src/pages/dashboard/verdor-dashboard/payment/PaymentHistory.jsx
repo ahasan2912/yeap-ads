@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useGetAllPaymentQuery } from "../../../../features/payment/paymentApi";
+import { useGetAllVendorPaymentHistoryQuery } from "../../../../features/payment/paymentApi";
 import Header from "./components/Header";
 import Table from "./components/Table";
 import Pagination from "./components/Pagination";
@@ -11,9 +11,9 @@ const PaymentHistory = () => {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
     const [page, setPage] = useState(1);
-    const [limit,] = useState(10);
+    const [limit,] = useState(5);
 
-    const { data: allPaymentList } = useGetAllPaymentQuery({
+    const { data: allPaymentList, isLoading } = useGetAllVendorPaymentHistoryQuery({
         sort: revenueFilter,
         searchTerm: debouncedSearchTerm,
         page: page,
@@ -34,10 +34,12 @@ const PaymentHistory = () => {
         }
     };
 
-    // if (analyticsLoading || isLoading) {
-    //     return <PaymentSkeleton />
-    // }
-    const totalPages = Math.ceil(allPaymentList?.data?.meta?.total / limit)
+    if (isLoading) {
+        return <PaymentSkeleton />
+    }
+    console.log(allPaymentList);
+
+    const totalPages = Math.ceil(allPaymentList?.data?.meta?.total / limit);
     return (
         <div className="bg-white rounded-lg shadow-sm border border-gray-100 mb-8">
             <div className="text-slate-700">
