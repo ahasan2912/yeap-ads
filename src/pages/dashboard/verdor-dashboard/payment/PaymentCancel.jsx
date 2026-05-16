@@ -37,7 +37,7 @@ const PaymentCancel = () => {
                     <Link
                         to="/my-deals"
                         className="bg-gray-200 hover:bg-gray-300 text-gray-700 py-3.5 rounded-xl font-semibold transition-all">
-                        Go to My Deals
+                        Go to My Ad
                     </Link>
                 </div>
             </div>

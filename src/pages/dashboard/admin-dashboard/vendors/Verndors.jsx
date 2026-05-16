@@ -130,8 +130,8 @@ const Verndors = () => {
     return (
         <div ref={animationScopeRef} className="min-h-screen pt-3 pb-5" data-animate="dashboard">
             <HeadingTitle
-                title="Shop Management"
-                description="Manage Shop accounts and applications"
+                title="Vendor Management"
+                description="Manage Vendor accounts and applications"
             />
 
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5" data-animate="stagger">

@@ -29,9 +29,9 @@ const Header = ({
     return (
         <div className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-                <h1 className="text-lg font-bold text-[#262626]">Shop List</h1>
+                <h1 className="text-lg font-bold text-[#262626]">Vendor List</h1>
                 <p className="text-sm text-[#737373] font-medium">
-                    Search, filter and manage all shop
+                    Search, filter and manage all vendor
                 </p>
             </div>
 
@@ -40,7 +40,7 @@ const Header = ({
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
                     <input
                         type="text"
-                        placeholder="Search shop"
+                        placeholder="Search vendor"
                         className="pl-10 pr-4 py-2.5 border border-[#A3A3A3] rounded-lg outline-none w-64 text-sm"
                         onChange={(e) => {
                             setSearchTerm(e.target.value);

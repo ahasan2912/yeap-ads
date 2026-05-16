@@ -1,18 +1,19 @@
-import { useState } from "react";
 import { useHandleCurrentLoggedInUserQuery } from "../../../features/auth/authApi";
 import VendorProfileSkeleton from "../../../components/skeleton/VendorProfileSkeleton";
 import ProfileDetails from "./ProfileDetails";
 import PasswordChange from "./PasswordChange";
 import { Link } from "react-router-dom";
 import { Eye, SquarePen } from "lucide-react";
+import { useState } from "react";
 
 const VendorProfile = () => {
-    const [activeTab, setActiveTab] = useState('profile-details');
+    const [setActiveTab] = useState('profile-details');
     const { data: currentVendor, isLoading } = useHandleCurrentLoggedInUserQuery();
     if (isLoading) {
         return <VendorProfileSkeleton />
     }
-    const { email, isActive, isShopCreated, isVerified, role, user_name, _id } = currentVendor?.data || {};
+    // const { email, isActive, isShopCreated, isVerified, role, user_name, _id } = currentVendor?.data || {};
+    const { email, isVerified, user_name, _id } = currentVendor?.data || {};
     const shortName = user_name
         .split(" ")
         .map(word => word[0])
@@ -39,16 +40,16 @@ const VendorProfile = () => {
                                         </span>
                                     </div>
                                     <p className="text-slate-500 font-medium">{email}</p>
-                                    <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-1">
+                                    {/* <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-1">
                                         <span className="px-4 py-1 rounded-full text-sm font-bold bg-slate-100 text-slate-600 border border-slate-200">{role}</span>
                                         <span className={`px-4 py-1 rounded-full text-sm font-bold bg-green-50 text-green-600 border border-green-100`}>{isActive ? 'ACTIVE' : 'NOT ACTIVE'}</span>
                                         <span className="px-4 py-1 rounded-full text-sm font-bold bg-orange-50 text-orange-600 border border-orange-100">{isShopCreated ? 'SHOP ACTIVE' : 'NOT SHOP ACTIVE'}</span>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <div className="w-full md:hidden mt-5 flex flex-col items-center">
                                     <Link to={`/show-outlet/${_id}`} className="w-full ">
                                         <button className="mt-1 flex gap-1 items-center justify-center bg-primary text-white w-full px-10 py-2.5 rounded-full text-base font-medium hover:bg-secondary transition cursor-pointer">
-                                            <Eye size={20} /> Show Location
+                                            <Eye size={20} /> Available locations Edi
                                         </button>
                                     </Link>
                                     <Link to={`/verdor-edit-shop/${_id}`} className="w-full flex">
@@ -62,31 +63,29 @@ const VendorProfile = () => {
                         <div className="hidden md:block">
                             <Link to={`/show-outlet/${_id}`}>
                                 <button className="mt-1 flex items-center bg-primary text-white w-full px-10 py-2.5 rounded-full text-base gap-1 font-medium hover:bg-secondary transition cursor-pointer">
-                                    <Eye size={20} /> Show Location
+                                    <Eye size={20} /> Available Locations Edit
                                 </button>
                             </Link>
                             <Link to={`/verdor-edit-shop/${_id}`}>
                                 <button className="mt-2 flex items-center gap-1 bg-primary text-white w-full px-10 py-2.5 rounded-full text-base font-medium hover:bg-secondary transition cursor-pointer">
-                                    <SquarePen size={20} /> Update Shop
+                                    <SquarePen size={20} /> Update shop
                                 </button>
                             </Link>
                         </div>
                     </div>
                 </div>
-                <div className="flex p-1 rounded-xl border border-slate-200 shadow-sm overflow-hidden gap-2">
+                {/* <div className="flex p-1 rounded-xl border border-slate-200 shadow-sm overflow-hidden gap-2">
                     <button className={`flex-1 py-3.5 sm:px-6 rounded-lg text-sm sm:text-base font-bold transition-all cursor-pointer ${activeTab == 'profile-details' ? 'bg-primary text-white hover:bg-secondary' : 'bg-slate-50 text-slate-500'}`} onClick={() => setActiveTab('profile-details')}>
                         Edit Profile Details
                     </button>
                     <button className={`flex-1 py-3.5 sm:px-6 rounded-lg text-sm sm:text-base font-bold transition-all cursor-pointer ${activeTab == 'password-change' ? 'bg-primary text-white hover:bg-secondary' : 'bg-slate-50 text-slate-500'}`} onClick={() => setActiveTab('password-change')}>
                         Change Password
                     </button>
-                </div>
-                {
+                </div> */}
+                {/* {
                     activeTab === 'profile-details' && <ProfileDetails currentVendor={currentVendor} />
-                }
-                {
-                    activeTab === 'password-change' && <PasswordChange setActiveTab={setActiveTab} />
-                }
+                } */}
+                <PasswordChange setActiveTab={setActiveTab} />
             </div>
         </div>
     );

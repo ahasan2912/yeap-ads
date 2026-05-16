@@ -99,7 +99,7 @@ const Deals = () => {
         <div className="bg-white min-h-screen px-4 pt-32 pb-12">
             <div className="max-w-305 mx-auto">
                 <div className="flex flex-col md:flex-row md:items-center gap-3">
-                    <div className="px-5 py-1 max-w-100 w-full rounded-full flex items-center gap-1 font-medium border border-[#737373] cursor-pointer">
+                    {/* <div className="px-5 py-1 max-w-100 w-full rounded-full flex items-center gap-1 font-medium border border-[#737373] cursor-pointer">
                         <Search className="text-[#737373]" size={20} />
                         <input
                             type="text"
@@ -108,17 +108,7 @@ const Deals = () => {
                             onChange={(e) => setSearchText(e.target.value)}
                             placeholder="Search your deals...."
                         />
-                    </div>
-
-                    <Link
-                        to="/create-deal"
-                        className="bg-primary hover:bg-secondary px-10 md:px-20 py-2.5 md:py-3.5 rounded-full flex items-center justify-center gap-1 text-white text-base font-bold max-w-100 md:max-w-75 w-full cursor-pointer"
-                    >
-                        <span>
-                            <Plus />
-                        </span>
-                        <span>Add New Deal</span>
-                    </Link>
+                    </div> */}
                 </div>
 
                 <div className="flex items-center justify-between mt-8 md:mt-12.5 border-b border-gray-200">
@@ -128,9 +118,8 @@ const Deals = () => {
                             className={`shrink-0 whitespace-nowrap rounded-full text-sm sm:text-base px-3 sm:px-6 py-2 font-medium cursor-pointer ${activeTab === "promoted"
                                 ? "bg-primary text-white"
                                 : "bg-white text-[#A3A3A3]"
-                                }`}
-                        >
-                            Active Deals
+                                }`}>
+                            Current Ads
                         </button>
 
                         <button
@@ -138,21 +127,28 @@ const Deals = () => {
                             className={`shrink-0 whitespace-nowrap rounded-full text-sm sm:text-base px-3 sm:px-6 py-2 font-medium cursor-pointer ${activeTab === "expired"
                                 ? "bg-primary text-white"
                                 : "bg-white text-[#A3A3A3]"
-                                }`}
-                        >
-                            Expired Deals
+                                }`}>
+                            Expired Ads
                         </button>
 
-                        <button
+                        {/* <button
                             onClick={() => setActiveTab("new")}
                             className={`shrink-0 whitespace-nowrap rounded-full text-sm sm:text-base px-3 sm:px-6 py-2 font-medium cursor-pointer ${activeTab === "new"
                                 ? "bg-primary text-white"
                                 : "bg-white text-[#A3A3A3]"
                                 }`}
                         >
-                            New Deals
-                        </button>
+                            Save Ads
+                        </button> */}
                     </div>
+                    <Link
+                        to="/create-deal"
+                        className="hidden bg-primary hover:bg-secondary py-2.5 rounded-full sm:flex items-center justify-center gap-1 text-white text-sm font-bold max-w-40 w-full cursor-pointer mb-3">
+                        <span>
+                            <Plus />
+                        </span>
+                        <span>Create New Ad</span>
+                    </Link>
                 </div>
 
                 <div className="mt-4">
@@ -164,7 +160,7 @@ const Deals = () => {
                         {currentDeals?.length === 0 && (
                             <div className="col-span-full text-center py-10 min-h-[10vh] flex items-center justify-center">
                                 <p className="text-gray-600 text-lg font-semibold">
-                                    Deal not Found
+                                    Ads Not Found
                                 </p>
                             </div>
                         )}

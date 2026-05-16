@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import EditOutletSkeleton from "../../../../components/skeleton/EditOutletSkeleton";
 
-const EditOutlet = ({ outletNumber }) => {
+const EditOutlet = () => {
     const { id } = useParams();
     const { user } = useSelector((state) => state?.auth);
     const navigate = useNavigate();
@@ -97,7 +97,7 @@ const EditOutlet = ({ outletNumber }) => {
         <div className="w-full max-w-3xl mx-auto px-5 pt-32 pb-12">
             <div className="bg-white rounded-2xl w-full p-6 md:p-8 border border-gray-300">
                 <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-2xl font-bold text-primary">Edit Outlet</h3>
+                    <h3 className="text-2xl font-bold text-primary">Edit Location</h3>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
@@ -147,7 +147,7 @@ const EditOutlet = ({ outletNumber }) => {
 
                     <div>
                         <label className="block text-lg text-gray-700 font-medium">
-                            Outlet-{outletNumber} Location
+                           Locations
                         </label>
 
                         <Controller
@@ -204,7 +204,7 @@ const EditOutlet = ({ outletNumber }) => {
                                 <div className="animate-spin border-2 border-t-4 border-white w-6 h-6 rounded-full" />
                             ) : (
                                 <span className="font-medium text-lg text-white">
-                                    Update Outlet
+                                    Update Location
                                 </span>
                             )}
                         </button>

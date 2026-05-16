@@ -51,11 +51,11 @@ const VendorDeails = () => {
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 py-4 sm:py-10">
-                        <button onClick={() => setActiveTab('active-deals')} className={`w-full sm:w-auto px-10 py-2.5 ${activeTab === 'active-deals' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
-                            Active Deals
+                        <button onClick={() => setActiveTab('active-deals')} className={`w-full sm:w-auto px-10 cursor-pointer py-2.5 ${activeTab === 'active-deals' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
+                            Active Ad
                         </button>
-                        <button onClick={() => setActiveTab('address')} className={`w-full sm:w-auto px-10 py-2.5 ${activeTab === 'address' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
-                            Address & Location
+                        <button onClick={() => setActiveTab('address')} className={`w-full sm:w-auto px-10 cursor-pointer py-2.5 ${activeTab === 'address' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
+                            Locations
                         </button>
                     </div>
                     {

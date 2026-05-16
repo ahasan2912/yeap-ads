@@ -74,7 +74,7 @@ const BothNavbar = () => {
                     <div className='flex justify-between items-center gap-5 lg:gap-20'>
                         <div className="hidden md:flex items-center space-x-4 lg:space-x-10 rounded-full">
                             <NavLink to='/shop-overview' className={({ isActive }) => isActive ? 'text-base text-primary font-semibold tracking-wider transition-all duration-300' : 'text-[#A3A3A3] font-semibold tracking-wider transition-all duration-300'}>Dashboard</NavLink>
-                            <NavLink to='/my-deals' className={({ isActive }) => isActive ? 'text-base text-primary font-semibold tracking-wider transition-all duration-300' : 'text-[#A3A3A3] font-semibold tracking-wider transition-all duration-300'}>My Deals</NavLink>
+                            <NavLink to='/my-deals' className={({ isActive }) => isActive ? 'text-base text-primary font-semibold tracking-wider transition-all duration-300' : 'text-[#A3A3A3] font-semibold tracking-wider transition-all duration-300'}>My Ads</NavLink>
                             <NavLink to='/my-profile' className={({ isActive }) => isActive ? 'text-base text-primary font-semibold tracking-wider transition-all duration-300' : 'text-[#A3A3A3] font-semibold tracking-wider transition-all duration-300'}>My Profile</NavLink>
                         </div>
                         <div className='hidden md:block'>
@@ -140,7 +140,7 @@ const BothNavbar = () => {
                                 `rounded-lg px-4 py-3 text-base font-semibold tracking-wider transition-colors ${isActive ? "bg-[#E0F2FE] text-primary" : "text-[#262626] hover:bg-[#F0F9FF] hover:text-secondary"}`
                             }
                         >
-                            My Deals
+                            My Ads
                         </NavLink>
                         <NavLink
                             to="/my-profile"

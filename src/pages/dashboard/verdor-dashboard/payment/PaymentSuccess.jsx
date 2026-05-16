@@ -25,7 +25,7 @@ const PaymentSuccess = () => {
                     Payment Successful!
                 </h1>
                 <p className="text-gray-500 mt-3 leading-relaxed">
-                    Thank you for your purchase. Your deal is now available under "My Deals" section.
+                    Thank you for your purchase. Your deal is now available under "My Ad" section.
                 </p>
                 <div className="bg-gray-50 rounded-2xl p-5 mt-8 border border-gray-100">
                     <p className="text-xs uppercase tracking-wider text-gray-400 font-semibold">
@@ -39,12 +39,12 @@ const PaymentSuccess = () => {
                     <Link
                         to="/my-deals"
                         className={`${brandTeal} ${brandTealHover} text-white py-3.5 rounded-xl font-semibold transition-all shadow-md shadow-cyan-100`}>
-                        View Deals List
+                        View Ad List
                     </Link>
                     <Link
                         to={`/deal-details/${dealId}`}
                         className={`bg-primary hover:bg-secondary text-white py-3.5 rounded-xl font-semibold transition-all shadow-md`}>
-                        View Deal Details
+                        View Ad Details
                     </Link>
                 </div>
             </div>

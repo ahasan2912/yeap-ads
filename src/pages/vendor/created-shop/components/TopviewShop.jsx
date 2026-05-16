@@ -12,7 +12,7 @@ const TopviewShop = () => {
         <div>
             <div className="flex justify-between items-end mb-6">
                 <h2 className="font-bold text-primary text-lg">
-                    Top Viewed Deals
+                    Top Viewed Ads
                 </h2>
                 <Link
                     to="/all-top-views"

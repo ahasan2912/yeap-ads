@@ -82,9 +82,9 @@ const CreateDealPlan = () => {
 
                     {/* Page heading */}
                     <h1 className="mb-9 text-3xl font-extrabold text-[#0f1f2e] sm:text-4xl">
-                        Promote your{' '}
+                        Promote Your{' '}
                         <span className="bg-linear-to-br from-[#4CAF50] to-[#79be7b] bg-clip-text text-transparent">
-                            deal
+                            Ad
                         </span>
                     </h1>
 

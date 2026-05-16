@@ -34,7 +34,8 @@ const CreatedShop = () => {
               <NavLink to='/create-deal' className=''>
                 <button className="mt-1 flex items-center gap-1 bg-primary text-white w-fit px-6 sm:px-12 py-2.5 rounded-full text-base font-medium
               hover:bg-secondary transition cursor-pointer">
-                  <Plus size={18} /> Add New Deal
+                  <Plus size={18} />  Create New Ad
+
                 </button>
               </NavLink>
             </div>
