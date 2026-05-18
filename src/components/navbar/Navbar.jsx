@@ -125,8 +125,8 @@ const Navbar = () => {
     };
 
     return (
-        <div>
-            <nav className="fixed w-full px-4 z-50 bg-[#E0F2FE] py-5">
+        <>
+            <nav className="relative z-50 w-full px-4 bg-[#E0F2FE] py-5">
                 <div className="max-w-305 mx-auto flex items-center justify-between relative">
                     <div className="max-w-52.5 sm:max-w-62.5 flex items-center gap-2 cursor-pointer">
                         <Link to="/" className="relative flex items-center justify-center" aria-label="Yepp Ads home">
@@ -271,7 +271,7 @@ const Navbar = () => {
 
             {/* CATEGORY SUB-HEADER  */}
             {shouldShowCategoryHeader && <CategoryHeader />}
-        </div>
+        </>
     );
 };
 

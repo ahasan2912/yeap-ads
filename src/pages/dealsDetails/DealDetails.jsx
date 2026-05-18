@@ -11,7 +11,6 @@ import useUserLocation from '../../hooks/useUserLocation';
 import CopiedLink from './components/CopiedLink';
 import OutLetshowMap from './OutLetshowMap';
 import { useGsapAnimations } from '../../hooks/useGsapAnimations';
-import { useGetAllCategoriesQuery } from '../../features/categories/CategoriesApi';
 import { getDealPricing } from '../../utils/dealPricing';
 
 const DealDetails = () => {
@@ -19,7 +18,6 @@ const DealDetails = () => {
     const [selectId, setSelectId] = useState();
     const { id } = useParams();
     const { latitude, longitude } = useUserLocation();
-    const { data: categories, isLoading: categoryLoading } = useGetAllCategoriesQuery();
     const { data: deal, isLoading } = useGetDealDetailsQuery({ id, longitude, latitude });
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const animationScopeRef = useGsapAnimations(`deal-details-${id}-${deal?.data?._id ?? ""}`);
@@ -37,7 +35,7 @@ const DealDetails = () => {
         func();
     }, [id])
 
-    if (isLoading || categoryLoading) {
+    if (isLoading) {
         return <DealDetailsSkeleton />
     }
 
@@ -66,10 +64,9 @@ const DealDetails = () => {
 
     const { regularPrice: price, finalPrice, discount: dealDiscount, hasDiscount } = getDealPricing(reguler_price, discount);
     const outletDistanceMiles = (Number(available_outlet?.[0]?.distance) || 0) / 1609.344;
-    const categoryLength = categories?.data?.length;
 
     return (
-        <div ref={animationScopeRef} className={`bg-white px-4 pb-8 ${categoryLength > 10 ? 'pt-62 sm:pt-70' : 'pt-52 md:pt-56'}`} data-animate="fade-up">
+        <div ref={animationScopeRef} className="bg-white px-4 pt-8 pb-8" data-animate="fade-up">
             <div className="max-w-305 mx-auto">
                 <div className="flex flex-col gap-6 md:flex-row lg:gap-8">
                     {/* left side */}
@@ -173,7 +170,7 @@ const DealDetails = () => {
                             <h3 className="font-bold text-xl text-[#262626] mb-2">How to Redeem</h3>
                             <Redeem />
                         </section>
-                        <section>
+                        {/* <section>
                             <h3 className="mb-2 text-lg font-bold text-[#262626] sm:text-xl">Highlight</h3>
                             <ul className="space-y-2">
                                 {highlight.map((text, i) => (
@@ -182,9 +179,9 @@ const DealDetails = () => {
                                     </li>
                                 ))}
                             </ul>
-                        </section>
+                        </section> */}
 
-                        <section>
+                        {/* <section>
                             <h3 className="mb-2 mt-2 text-lg font-bold text-[#262626] sm:text-xl">Tags</h3>
                             <ul className="space-y-2">
                                 {tags.map((text, i) => (
@@ -193,7 +190,7 @@ const DealDetails = () => {
                                     </li>
                                 ))}
                             </ul>
-                        </section>
+                        </section> */}
                         {/* Description & Included */}
                         <section className="space-y-2 mt-2">
                             <h3 className="mb-2 text-lg font-bold text-[#262626] sm:text-xl">Description</h3>

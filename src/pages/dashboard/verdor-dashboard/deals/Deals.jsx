@@ -131,7 +131,7 @@ const Deals = () => {
                             Expired Ads
                         </button>
 
-                        {/* <button
+                        <button
                             onClick={() => setActiveTab("new")}
                             className={`shrink-0 whitespace-nowrap rounded-full text-sm sm:text-base px-3 sm:px-6 py-2 font-medium cursor-pointer ${activeTab === "new"
                                 ? "bg-primary text-white"
@@ -139,7 +139,7 @@ const Deals = () => {
                                 }`}
                         >
                             Save Ads
-                        </button> */}
+                        </button>
                     </div>
                     <Link
                         to="/create-deal"

@@ -10,7 +10,7 @@ const TermsAndConditions = () => {
     }, []);
 
     return (
-        <div className="bg-gray-50 px-4 pt-[220px] pb-12 sm:pt-56 sm:pb-16">
+        <div className="bg-gray-50 px-4 pt-10 pb-12 sm:pt-12 sm:pb-16">
             <div className="max-w-4xl mx-auto rounded-lg border border-gray-100 bg-white px-5 py-8 shadow-sm sm:px-8 lg:px-10">
                 <Title>Terms and Conditions for Yepp Ads</Title>
                 <p className="mb-8 text-sm font-semibold uppercase tracking-wide text-[#6B7280]">Effective Date: 10 April 2026</p>

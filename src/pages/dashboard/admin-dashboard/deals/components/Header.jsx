@@ -11,9 +11,9 @@ const Header = ({
     return (
         <div className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-                <h1 className="text-lg font-bold text-[#262626]">Deals</h1>
+                <h1 className="text-lg font-bold text-[#262626]">Ads</h1>
                 <p className="text-sm text-[#737373] font-medium">
-                   Manage all the deals of this platform
+                   Manage all the ads of this platform
                 </p>
             </div>
 

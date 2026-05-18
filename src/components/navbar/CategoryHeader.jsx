@@ -68,8 +68,8 @@ const CategoryHeader = () => {
         : Math.max(visibleCategories.length, 1);
 
     return (
-        <div className='fixed w-full bg-[#F0F9FF] px-3 pt-22 pb-2 shadow-sm sm:px-4 z-40'>
-            <div className="max-w-305 mx-auto flex items-center gap-3 py-2.5 sm:gap-4 sm:py-3">
+        <div className='sticky top-0 z-40 w-full bg-[#F0F9FF] px-3 py-2 shadow-sm sm:px-4'>
+            <div className="max-w-305 mx-auto flex items-center gap-3 py-1.5 sm:gap-4">
                 <nav
                     ref={categoryNavRef}
                     aria-label="Deal categories"

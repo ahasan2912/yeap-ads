@@ -9,7 +9,7 @@ const AboutUs = () => {
     }, []);
 
     return (
-        <main className="min-h-[calc(100vh-50px)] bg-gray-50 px-4 pt-[220px] pb-12 sm:pt-56 sm:pb-16" data-animate="fade-up">
+        <main className="min-h-[calc(100vh-50px)] bg-gray-50 px-4 pt-10 pb-12 sm:pt-12 sm:pb-16" data-animate="fade-up">
             <div className="mx-auto max-w-4xl rounded-lg border border-gray-100 bg-white px-5 py-8 shadow-sm sm:px-8 lg:px-10" data-animate="stagger">
                 <header className="mb-8">
                     <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-primary">About Yepp Ads</p>

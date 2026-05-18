@@ -20,7 +20,7 @@ const formatNotificationDate = (date) => {
     }).format(parsedDate);
 };
 
-const pageClassName = "flex min-h-screen items-center justify-center bg-[#F8FAFC] px-4 pt-[220px] pb-16";
+const pageClassName = "flex min-h-screen items-center justify-center bg-[#F8FAFC] px-4 py-16";
 const panelClassName = "w-full max-w-2xl rounded-lg border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-8";
 
 const ShowNotification = () => {

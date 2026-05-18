@@ -6,17 +6,15 @@ import { images } from "../../../assets/image";
 import { useParams } from "react-router-dom";
 import OutletLocation from "./address/OutletLocation";
 import Pagination from "../created-shop/components/Pagination";
-import { useGetAllCategoriesQuery } from "../../../features/categories/CategoriesApi";
 const ROWS_PER_PAGE = import.meta.env.VITE_ROWS_PER_PAGE;
 
 const VendorDeails = () => {
     const [activeTab, setActiveTab] = useState('active-deals');
     const { id } = useParams();
     const { data: shopDetails, isLoading } = useGetShopDetailsQuery(id);
-    const { data: categories, isLoading: categoryLoading } = useGetAllCategoriesQuery();
     const [currentPage, setCurrentPage] = useState(1);
 
-    if (isLoading || categoryLoading) {
+    if (isLoading) {
         return <DealCardSkeleton />
     }
 
@@ -27,10 +25,8 @@ const VendorDeails = () => {
     const currentDeals = allDeals.slice(indexOfFirst, indexOfLast);
     const businessName = shopDetails?.data?.business_name;
 
-    const categoryLength = categories?.data?.length;
-
     return (
-        <div className={`bg-white px-4 ${categoryLength > 10 ? 'pt-64 sm:pt-68 md:pt-72' : 'pt-48'}`}>
+        <div className="bg-white px-4 pt-8">
             <div className="max-w-305 mx-auto">
                 <div className="flex flex-col">
                     <div className="flex flex-col items-center sm:items-start md:flex-row gap-3">

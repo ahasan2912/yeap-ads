@@ -59,7 +59,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                             </NavLink>
                             <NavLink to='/dashboard/admin-deals' className={({ isActive }) => `flex items-center gap-1 w-full py-3 ease-in-out text-base font-semibold hover:bg-[#F9F0FF] hover:text-secondary hover:border-(--primary-color) hover:border-l-8 hover:rounded-sm  ${isActive ? 'bg-[#F9F0FF] py-2 pl-3 rounded-sm text-primary border-l-8 border-(--primary-color)' : 'pl-3 text-white'}`}>
                                 <Tag size={18} />
-                                <span>Deals</span>
+                                <span>Ads</span>
                             </NavLink>
                         </ul>
                         <ul className='space-y-2 pr-5 mt-4 pl-3.5'>

@@ -6,8 +6,8 @@ const Table = ({ dealsData }) => {
             <table className="w-full text-left border-collapse">
                 <thead>
                     <tr className="border-y border-gray-100 bg-gray-50/50">
-                        <th className="px-6 py-4 text-base font-semibold text-primary">Shop</th>
-                        <th className="px-6 py-4 text-base font-semibold text-primary">Deals</th>
+                        <th className="px-6 py-4 text-base font-semibold text-primary">Vendor</th>
+                        <th className="px-6 py-4 text-base font-semibold text-primary">Ads</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Impression</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">View</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Status</th>

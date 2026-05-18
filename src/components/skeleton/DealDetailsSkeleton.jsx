@@ -1,6 +1,6 @@
 const DealDetailsSkeleton = () => {
     return (
-        <div className="max-w-7xl mx-auto pt-40 px-4 animate-pulse">
+        <div className="max-w-7xl mx-auto px-4 py-12 animate-pulse">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="space-y-4">
                     <div className="w-full h-95 bg-gray-200 rounded-xl"></div>

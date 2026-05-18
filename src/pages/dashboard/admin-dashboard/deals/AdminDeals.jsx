@@ -49,14 +49,14 @@ const AdminDeals = () => {
     return (
         <div ref={animationScopeRef} className="min-h-screen pt-3 pb-5" data-animate="dashboard">
             <HeadingTitle
-                title='Deal Management'
-                description='Manage deals and track performance.'
+                title='Ad Management'
+                description='Manage ads and track performance.'
             />
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5" data-animate="stagger">
                 <StatsCard
                     bgColor='bg-[#FFFFFF]'
                     color='text-[#262626]'
-                    titleText='Total Deals'
+                    titleText='Total Ads'
                     value={totalDeals}
                     iconBg='bg-[#F0F9FF]'
                     iconColor='text-[#A8EBF7]'
@@ -65,7 +65,7 @@ const AdminDeals = () => {
                 <StatsCard
                     bgColor='bg-[#FFFFFF]'
                     color='text-[#262626]'
-                    titleText='Active Deals'
+                    titleText='Active Ads'
                     value={activeDeals}
                     iconBg='bg-[#F0FDF4]'
                     iconColor='text-[#22C55E]'
