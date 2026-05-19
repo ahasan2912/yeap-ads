@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { MapPin, Store, ChevronRight, Pencil } from "lucide-react";
+import { MapPin, Store, ChevronRight, Pencil, CirclePlus } from "lucide-react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import outletMapIcon from "../../../assets/images/outletMap.png";
 import useUserLocation from "../../../hooks/useUserLocation";
 import { Link } from "react-router-dom";
 import { googleMapsLoaderOptions } from "../../../lib/googleMapsLoader";
+import OutletModal from "../../vendor/create-shop/components/OutletModal";
+import EditOutletSkeleton from "../../../components/skeleton/EditOutletSkeleton";
+import AddLocation from "./AddLocation";
 
 export default function ShowoutletMap({ outlets = [] }) {
     const { latitude, longitude } = useUserLocation();
+    const [showModal, setShowModal] = useState(false);
     const [selectedOutlet, setSelectedOutlet] = useState(outlets?.[0] || null);
     const GOOGLE_MAP_API_KEY = import.meta.env.VITE_GOOGLE_MAP_API_KEY;
-
     const { isLoaded } = useJsApiLoader(googleMapsLoaderOptions);
 
     useEffect(() => {
@@ -25,7 +28,6 @@ export default function ShowoutletMap({ outlets = [] }) {
     const coordinates = selectedOutlet?.location?.coordinates;
     const outletLng = coordinates?.[0];
     const outletLat = coordinates?.[1];
-
     const center =
         outletLat != null && outletLng != null
             ? { lat: outletLat, lng: outletLng }
@@ -65,13 +67,23 @@ export default function ShowoutletMap({ outlets = [] }) {
             ? getDistanceInMiles(latitude, longitude, outletLat, outletLng)
             : null;
 
+
     return (
         <div className="w-full max-w-305 mx-auto pb-10">
             <div className="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden shadow-sm bg-white min-h-110">
                 <div className="md:w-5/12 flex flex-col p-3 sm:p-6 border-b md:border-b-0 md:border-r border-gray-200">
-                    <p className=" text-xl sm:text-[26px] font-bold text-primary mb-5">
-                        Available Locations
-                    </p>
+                    <div className="flex justify-between items-center gap-1 sm:gap-2 mb-5">
+                        <p className=" text-xl sm:text-[26px] font-bold text-primary">
+                            Available Locations
+                        </p>
+                        <button
+                            type="button"
+                            onClick={() => setShowModal(true)}
+                            className="ml-3 relative z-20 shrink-0 inline-flex items-center gap-1 rounded-md border border-transparent bg-primary px-1 sm:px-3 py-2 text-sm font-semibold text-white hover:bg-secondary transition-all duration-200 cursor-pointer">
+                            <MapPin className="w-3.5 sm:w-4.5 h-3.5 sm:h-4.5" />
+                            Add
+                        </button>
+                    </div>
 
                     <div className="space-y-5">
                         {outlets.map((outlet) => {
@@ -93,8 +105,8 @@ export default function ShowoutletMap({ outlets = [] }) {
                                 <div
                                     key={outlet?._id}
                                     className={`w-full flex items-center justify-between rounded-lg px-3 py-3 sm:px-5 sm:py-4 transition-all duration-200 border ${isActive
-                                            ? "bg-cyan-50 border-green-500 shadow-sm"
-                                            : "bg-slate-100 border-transparent hover:bg-slate-200"
+                                        ? "bg-cyan-50 border-green-500 shadow-sm"
+                                        : "bg-slate-100 border-transparent hover:bg-slate-200"
                                         }`}
                                 >
                                     <div
@@ -210,6 +222,10 @@ export default function ShowoutletMap({ outlets = [] }) {
                         )}
                     </div>
                 </div>
+                {/* Outlet Modal */}
+                {showModal && (
+                    <AddLocation onClose={() => setShowModal(false)} />
+                )}
             </div>
         </div>
     );

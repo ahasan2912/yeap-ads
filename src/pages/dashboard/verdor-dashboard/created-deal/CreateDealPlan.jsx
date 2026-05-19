@@ -71,7 +71,6 @@ const CreateDealPlan = () => {
         };
         const res = await handlePayment(finalData);
         window.location.href = res?.data?.data?.checkout_url;
-
     };
 
     return (
@@ -168,6 +167,12 @@ const CreateDealPlan = () => {
                                         <span className="text-sm text-[#6e8f70] font-medium whitespace-nowrap">Plan Price</span>
                                         <span className="text-sm font-semibold text-[#0f1f2e] text-right wrap-break-word">
                                             ${planPrice.toFixed(2)}
+                                        </span>
+                                    </div>
+                                    <div className="flex items-baseline justify-between gap-3 py-2.5 border-t border-[#edf7ee]">
+                                        <span className="text-sm text-[#6e8f70] font-medium whitespace-nowrap">Discount Percentage</span>
+                                        <span className="text-sm font-semibold text-[#0f1f2e] text-right wrap-break-word">
+                                            {discountPercentage}%
                                         </span>
                                     </div>
                                     <div className="flex items-baseline justify-between gap-3 py-2.5 border-t border-[#edf7ee]">

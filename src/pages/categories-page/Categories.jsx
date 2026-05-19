@@ -38,7 +38,7 @@ const Categories = () => {
                     <div>
                         <p className="text-base font-semibold text-primary">Categories</p>
                         <h1 className="text-2xl font-bold text-[#262626] sm:text-[32px]">
-                            Browse deals by category
+                            Browse ads by category
                         </h1>
                     </div>
                     <p className="text-sm font-medium text-primary">

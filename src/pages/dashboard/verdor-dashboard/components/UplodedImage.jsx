@@ -57,7 +57,7 @@ const UploadedImage = ({ setImagesFiles, getAllImages, setValue, imageError, set
     <div className={className}>
       <h1 className="text-xl font-bold text-primary">Media</h1>
       <p className="mt-1 text-sm font-medium text-[#737373]">
-        You can upload up to 3 images to showcase your deal.
+        You can upload up to 3 images to showcase your ad.
       </p>
 
       <div className={`relative mt-5 flex h-72 cursor-pointer items-center justify-center overflow-hidden rounded-lg border bg-slate-50 shadow-inner transition-all ${imageError ? "border-red-500" : "border-slate-200 hover:border-[#2B9DAE]/50 hover:bg-white"}`}>

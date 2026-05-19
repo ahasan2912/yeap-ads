@@ -90,7 +90,7 @@ const DealCard = ({ deal }) => {
                             }
                             {
                                 newDeal && <div className="inline-flex max-w-full rounded-full bg-primary px-2.5 py-1 text-xs font-bold text-white">
-                                    Not Promoted Deal Yet
+                                    Not Activated Yet
                                 </div>
                             }
                         </div>

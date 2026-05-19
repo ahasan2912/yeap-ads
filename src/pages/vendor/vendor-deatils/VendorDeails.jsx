@@ -47,17 +47,17 @@ const VendorDeails = () => {
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-4 py-4 sm:py-10">
-                        <button onClick={() => setActiveTab('active-deals')} className={`w-full sm:w-auto px-10 cursor-pointer py-2.5 ${activeTab === 'active-deals' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
+                        <button onClick={() => setActiveTab('active-deals')} className={`w-full sm:w-auto px-10 cursor-pointer py-2 ${activeTab === 'active-deals' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
                             Active Ad
                         </button>
-                        <button onClick={() => setActiveTab('address')} className={`w-full sm:w-auto px-10 cursor-pointer py-2.5 ${activeTab === 'address' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
+                        <button onClick={() => setActiveTab('address')} className={`w-full sm:w-auto px-10 cursor-pointer py-2 ${activeTab === 'address' ? 'bg-primary hover:bg-secondary text-white' : 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-400'} text-xl font-medium rounded-full transition-colors duration-200`}>
                             Locations
                         </button>
                     </div>
                     {
                         activeTab === 'active-deals' && <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
                             {currentDeals?.map((deal) => (
-                                <DealCard key={deal?._id} deal={deal} />
+                                <DealCard key={deal?._id} deal={deal} shopName={businessName}/>
                             ))}
                         </div>
                     }

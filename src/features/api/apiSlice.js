@@ -4,8 +4,14 @@ import { baseQueryWithErrorHandling } from "./errorHandling";
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_URL,
+  
   credentials: "include",
   prepareHeaders: (headers) => {
+    // Global headers
+    headers.set("Content-Type", "application/json");
+    headers.set("Accept", "application/json");
+    headers.set("ngrok-skip-browser-warning", "true");
+
     const resetToken = localStorage.getItem("resetToken");
     const token = Cookies.get("accessToken");
     if (token) {

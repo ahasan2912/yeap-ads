@@ -39,7 +39,7 @@ const DealDetails = () => {
         return <DealDetailsSkeleton />
     }
 
-    const { _id, title, images, highlight, description, reguler_price, discount, promotedUntil, shop, available_outlet, tags } = deal?.data || {};
+    const { _id, title, images, description, reguler_price, discount, promotedUntil, shop, available_outlet } = deal?.data || {};
 
     const nextImage = () => {
         setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));

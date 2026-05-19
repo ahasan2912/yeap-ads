@@ -55,7 +55,7 @@ const UploadedImage = ({ setImagesFiles }) => {
     <div className="w-full md:w-1/2">
       <h1 className="text-primary text-xl font-bold">Media:</h1>
       <p className="text-[#262626] text-base font-medium">
-        You can upload up to 3 images to showcase your deal.
+        You can upload up to 3 images to showcase your ad.
       </p>
       <div className="relative bg-linear-to-b from-gray-100 to-gray-300 rounded-xl aspect-video flex items-center justify-center overflow-hidden mt-4 h-70">
         {images.length > 0 ? (

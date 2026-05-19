@@ -53,7 +53,7 @@ export const StatCardFour = ({ active_deals }) => {
     return (
         <div className={`bg-linear-to-r from-[#21C55D] to-[#35E374] p-6 rounded-lg text-white shadow-sm flex justify-between items-center`}>
             <div className="space-y-2">
-                <p className="text-xl font-medium">Active Deals</p>
+                <p className="text-xl font-medium">Active Ads</p>
                 <h3 className="text-3xl font-bold mt-1">
                     {String(active_deals || 0).padStart(2, "0")}
                 </h3>

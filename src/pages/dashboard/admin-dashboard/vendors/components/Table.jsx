@@ -23,7 +23,7 @@ const Table = ({ vendorData, handleStatusChange, isStatusUpdating }) => {
                     <tr className="border-y border-gray-100 bg-gray-50/50">
                         <th className="px-6 py-4 text-base font-semibold text-primary">Vendor</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">User</th>
-                        <th className="px-6 py-4 text-base font-semibold text-primary">Deals</th>
+                        <th className="px-6 py-4 text-base font-semibold text-primary">Ads</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Status</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Revenue</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary text-right">Action</th>
@@ -74,7 +74,7 @@ const Table = ({ vendorData, handleStatusChange, isStatusUpdating }) => {
                                 </td>
 
                                 <td className="px-6 py-4 text-sm font-semibold text-[#525252]">
-                                    ${item?.totalRevenue || 0}
+                                    ${Number(item?.totalRevenue || 0).toFixed(2)}
                                 </td>
 
                                 <td className="px-6 py-4 text-right">

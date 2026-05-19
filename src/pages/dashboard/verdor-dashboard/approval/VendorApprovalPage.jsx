@@ -126,13 +126,13 @@ const VendorApprovalPage = () => {
               </div>
 
               <div
-                className={`relative mt-7 flex h-[168px] w-[168px] items-center justify-center ${currentStatus.animate ? 'animate-pulse' : ''}`}
+                className={`relative mt-7 flex h-42 w-42 items-center justify-center ${currentStatus.animate ? 'animate-pulse' : ''}`}
               >
                 <div
-                  className={`absolute h-[128px] w-[196px] rounded-[46%_54%_52%_48%/44%_38%_62%_56%] ${currentStatus.haloClass}`}
+                  className={`absolute h-32 w-49 rounded-[46%_54%_52%_48%/44%_38%_62%_56%] ${currentStatus.haloClass}`}
                 />
                 <div
-                  className={`relative flex h-[116px] w-[116px] items-center justify-center rounded-[30px] border ${currentStatus.iconWrapClass}`}
+                  className={`relative flex h-29 w-29 items-center justify-center rounded-[30px] border ${currentStatus.iconWrapClass}`}
                 >
                   <div
                     className={`absolute inset-4 rounded-[22px] border ${currentStatus.iconInnerClass}`}
@@ -152,7 +152,7 @@ const VendorApprovalPage = () => {
                 {currentStatus.description}
               </p>
 
-              <div className="mt-8 grid w-full max-w-[560px] gap-3 sm:grid-cols-2">
+              <div className="mt-8 grid w-full max-w-140 gap-3 sm:grid-cols-2">
                 <div className="rounded-xl border border-slate-200 bg-[#FCFCFB] px-4 py-4 text-left">
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-400">
                     {currentStatus.statusLabel}
@@ -173,7 +173,7 @@ const VendorApprovalPage = () => {
               </div>
 
               <div
-                className={`mt-7 flex w-full max-w-[560px] items-start gap-4 rounded-2xl border px-5 py-5 text-left ${currentStatus.noteClass}`}
+                className={`mt-7 flex w-full max-w-140 items-start gap-4 rounded-2xl border px-5 py-5 text-left ${currentStatus.noteClass}`}
               >
                 <div
                   className={`mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${currentStatus.noteIconClass}`}
@@ -186,7 +186,7 @@ const VendorApprovalPage = () => {
                 </p>
               </div>
 
-              <div className="mt-7 flex w-full max-w-[560px] flex-col gap-3 sm:flex-row">
+              <div className="mt-7 flex w-full max-w-140 flex-col gap-3 sm:flex-row">
                 <button
                   type="button"
                   onClick={handleClick}

@@ -11,7 +11,7 @@ const Table = ({ paymentData }) => {
                 <thead>
                     <tr className="border-y border-gray-100 bg-gray-50/50">
                         <th className="px-6 py-4 text-base font-semibold text-primary">Transaction ID</th>
-                        <th className="px-6 py-4 text-base font-semibold text-primary">Deals</th>
+                        <th className="px-6 py-4 text-base font-semibold text-primary">Ads</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Plan</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Status</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Amount</th>

@@ -80,6 +80,15 @@ export const shopApi = apiSlice.injectEndpoints({
       }),
     }),
 
+    addShopOutlet: builder.mutation({
+      query: (data) => ({
+        url: `/outlet`,
+        method: "POST",
+        body: data,
+        credentials: "include",
+      }),
+    }),
+
     shopApprovedEdit: builder.mutation({
       query: ({ id, data }) => ({
         url: `/shop/update_shop/${id}`,
@@ -101,5 +110,6 @@ export const {
   useGetVendorDetailsQuery,
   useEditshopMutation,
   useEditShopOutletMutation,
-  useShopApprovedEditMutation
+  useShopApprovedEditMutation,
+  useAddShopOutletMutation
 } = shopApi;

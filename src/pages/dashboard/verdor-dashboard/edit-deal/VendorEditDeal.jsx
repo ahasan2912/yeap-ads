@@ -51,11 +51,11 @@ const VendorEditDeal = () => {
 
     useEffect(() => {
         if (isSuccess) {
-            toast.success("Deal updated successfully!");
+            toast.success("Ad updated successfully!");
             navigate("/my-deals");
         }
         if (error) {
-            const message = error?.data?.message || "Deal upaded failed!";
+            const message = error?.data?.message || "Ad upaded failed!";
             toast.error(message);
         }
 
@@ -201,38 +201,44 @@ const VendorEditDeal = () => {
         <div className="min-h-screen bg-[#F8FAFC] px-4 pt-28 pb-12">
             <div className="max-w-305 mx-auto">
                 <div className="mb-8 border-b border-slate-200 pb-6">
-                    <h1 className="text-3xl font-bold tracking-normal text-[#262626] sm:text-[32px]">Update Your Deal</h1>
+                    <h1 className="text-3xl font-bold tracking-normal text-[#262626] sm:text-[32px]">Update Your Ad</h1>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
-                        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-                            <UplodedImage
-                                setImagesFiles={setImagesFiles}
-                                getAllImages={dealDetail?.data?.images}
-                                setValue={setValue}
-                                className="w-full"
-                            />
+                        {/* Deal Info */}
+                        <div className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+                            <h2 className="text-xl font-bold text-primary">Ad Info</h2>
+                            {/* Title */}
+                            <div>
+                                <label className="block text-base text-[#262626] font-medium mb-2">
+                                    Ad Title
+                                </label>
+                                <input
+                                    {...register("title", {
+                                        required: "Ad title is required",
+                                        validate: (value) =>
+                                            value.trim().length >= 5 || "Ad Title must be minimum 5 characters",
+                                    })}
+                                    placeholder="Title"
+                                    className={`w-full rounded-full border bg-white px-6 py-4 text-[#262626] outline-none transition-all focus:ring-4 focus:ring-primary/10 ${errors.title ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-slate-300 focus:border-primary"}`}
+                                />
+                                {errors.title && (
+                                    <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
+                                )}
+                            </div>
+
+                            {/* Highlights */}
+                            <Highlights setValue={setValue} initialHighlights={initialHighlights} />
+
+                            {/* Tags */}
+                            <Tags setValue={setValue} initialTags={initialTags} />
                         </div>
 
+                        {/* Deal Priceing */}
                         <div className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-                            <h2 className="text-xl font-bold text-primary">Deal Pricing</h2>
-                            <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
-                                <input
-                                    type="checkbox"
-                                    {...register("finalPriceOnly")}
-                                    className="mt-1 h-4 w-4 accent-primary"
-                                />
-
-                                <div className="space-y-1">
-                                    <span className="block text-sm font-semibold text-[#262626]">
-                                        Final Price Only
-                                    </span>
-                                    <p className="text-sm leading-6 text-slate-500">
-                                        Let the customer see a single final price and skip the regular price plus discount breakdown.
-                                    </p>
-                                </div>
-                            </label>
+                            <h2 className="text-xl font-bold text-primary">Ad Pricing</h2>
+                            
                             {/* Regular Price */}
                             <div className={isFinalPriceOnly ? "opacity-70" : ""}>
                                 <label className="block text-base text-[#262626] font-medium mb-2">
@@ -268,7 +274,7 @@ const VendorEditDeal = () => {
                             {/* Discount */}
                             <div className={isFinalPriceOnly ? "opacity-70" : ""}>
                                 <label className="block text-base text-[#262626] font-medium mb-2">
-                                    What is the discount percentage for this deal?
+                                    What is the discount percentage for this ad?
                                 </label>
                                 <div className="relative">
                                     <input
@@ -298,6 +304,22 @@ const VendorEditDeal = () => {
                                     </p>
                                 )}
                             </div>
+                            <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+                                <input
+                                    type="checkbox"
+                                    {...register("finalPriceOnly")}
+                                    className="mt-1 h-4 w-4 accent-primary"
+                                />
+
+                                <div className="space-y-1">
+                                    <span className="block text-sm font-semibold text-[#262626]">
+                                        Final Price Only
+                                    </span>
+                                    <p className="text-sm leading-6 text-slate-500">
+                                        Let the customer see a single final price and skip the regular price plus discount breakdown.
+                                    </p>
+                                </div>
+                            </label>
                             {/* Final Price */}
                             <div>
                                 <label className="block text-base text-[#262626] font-medium mb-2">
@@ -355,36 +377,19 @@ const VendorEditDeal = () => {
                             </div>
                         </div>
 
-                        <div className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-                            <h2 className="text-xl font-bold text-primary">Deal Info</h2>
-                            {/* Title */}
-                            <div>
-                                <label className="block text-base text-[#262626] font-medium mb-2">
-                                    Deal Title
-                                </label>
-                                <input
-                                    {...register("title", {
-                                        required: "Deal title is required",
-                                        validate: (value) =>
-                                            value.trim().length >= 5 || "Deal Title must be minimum 5 characters",
-                                    })}
-                                    placeholder="Title"
-                                    className={`w-full rounded-full border bg-white px-6 py-4 text-[#262626] outline-none transition-all focus:ring-4 focus:ring-primary/10 ${errors.title ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-slate-300 focus:border-primary"}`}
-                                />
-                                {errors.title && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
-                                )}
-                            </div>
-
-                            {/* Highlights */}
-                            <Highlights setValue={setValue} initialHighlights={initialHighlights} />
-
-                            {/* Tags */}
-                            <Tags setValue={setValue} initialTags={initialTags} />
+                        {/* Deal Media */}
+                        <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+                            <UplodedImage
+                                setImagesFiles={setImagesFiles}
+                                getAllImages={dealDetail?.data?.images}
+                                setValue={setValue}
+                                className="w-full"
+                            />
                         </div>
 
+                        {/* Deal Details */}
                         <div className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
-                            <h2 className="text-xl font-bold text-primary">Deal Details</h2>
+                            <h2 className="text-xl font-bold text-primary">Ad Details</h2>
                             {/* Description */}
                             <div>
                                 <label className="block text-base text-[#262626] font-medium mb-2">
@@ -446,7 +451,7 @@ const VendorEditDeal = () => {
                                                     className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${activeField === item.key
                                                         ? "border-primary bg-primary text-white shadow-sm"
                                                         : "border-slate-300 bg-white text-[#262626] hover:border-primary hover:bg-primary/5"
-                                                    }`}
+                                                        }`}
                                                 >
                                                     {item.label}
                                                 </button>
@@ -559,7 +564,7 @@ const VendorEditDeal = () => {
                             {isLoading ? (
                                 <div className="spinner-border animate-spin border-2 border-t-4 border-white w-6 h-6 rounded-full"></div>
                             ) : (
-                                <span className="font-medium text-lg text-[#FFFFFF]">Update Deal</span>
+                                <span className="font-medium text-lg text-[#FFFFFF]">Update Ad</span>
                             )}
                         </button>
                     </div>

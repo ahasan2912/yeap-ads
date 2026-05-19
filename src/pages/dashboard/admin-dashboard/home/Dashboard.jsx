@@ -50,8 +50,8 @@ const Dashboard = () => {
                     icon={Store}
                 />
                 <RecentDealCard
-                    title="Recent Deals"
-                    subtitle="Latest deals submissions"
+                    title="Recent Ads"
+                    subtitle="Latest ads submissions"
                     icon={Tag}
                     items={reacentDeals?.data?.vendors}
                 />

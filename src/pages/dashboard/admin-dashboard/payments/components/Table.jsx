@@ -60,7 +60,7 @@ const Table = ({ paymentData }) => {
                                     </span>
                                 </td>
                                 <td className="px-6 py-4 text-sm font-bold text-[#525252]">
-                                    ${item?.amount}
+                                    ${Number(item?.amount || 0).toFixed(2)}
                                 </td>
                                 <td className="px-6 py-4 text-sm font-bold text-[#525252]">
                                     {item?.provider

@@ -3,9 +3,8 @@ import Countdown from "../../../home/deals/Countdown";
 import { Link } from "react-router-dom";
 import { getDealPricing } from "../../../../utils/dealPricing";
 
-const DealCard = ({ deal, businessName }) => {
+const DealCard = ({ deal, shopName }) => {
     const { _id, images, promotedUntil, reguler_price, discount } = deal || {};
-    const shopName = businessName || deal?.shop?.business_name;
     const { regularPrice: price, finalPrice, discount: dealDiscount, hasDiscount } = getDealPricing(reguler_price, discount);
 
     return (
@@ -28,7 +27,7 @@ const DealCard = ({ deal, businessName }) => {
                 </h3>
                 <div className="flex min-w-0 items-center gap-1 text-sm text-[#A3A3A3]">
                     <span className="shrink-0 opacity-70"><Store size={17} className="text-[#A3A3A3]" /></span>
-                    <span className="min-w-0 truncate">{shopName}</span>
+                    <span className="min-w-0 truncate">{shopName || 'Zyz'}</span>
                 </div>
                 <div className="mt-3 flex min-w-0 flex-wrap items-start justify-between gap-2">
                     <div className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0.5">

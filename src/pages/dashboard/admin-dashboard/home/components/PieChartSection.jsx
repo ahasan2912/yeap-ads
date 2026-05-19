@@ -7,7 +7,7 @@ import { FALLBACK_COLORS } from "../../../../../lib/data";
 const PieChartSection = () => {
     const { data: categoriesDatas, isLoading, isError } = useGetDealCategoriesPieChartQuery();
     if (isLoading) return <PieChartSectionSkeleton />;
-    if (isError) return <p className="py-5 text-lg text-right">Failed to load Deals by category.</p>;
+    if (isError) return <p className="py-5 text-lg text-right">Failed to load Ads by category.</p>;
 
     const chartData =
         categoriesDatas?.data?.dealsByCategory?.map((item, index) => ({
@@ -20,9 +20,9 @@ const PieChartSection = () => {
     return (
         <div className="w-full rounded-lg bg-white p-6 shadow-sm lg:w-1/2">
             <div>
-                <h4 className="text-xl font-bold text-[#262626]">Deals by category</h4>
+                <h4 className="text-xl font-bold text-[#262626]">Ads by category</h4>
                 <p className="mt-1 mb-4 text-base font-medium text-[#737373]">
-                    Overview of deal distribution across different categories
+                    Overview of ad distribution across different categories
                 </p>
             </div>
 

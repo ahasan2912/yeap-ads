@@ -36,10 +36,8 @@ const LogIn = () => {
 
     // email and password
     useEffect(() => {
-        console.log('user find........')
         if (!user) return;
         // fcm token when user loing
-        console.log('user find........')
         const registerToken = async () => {
             const fcmToken = await generateFcmTokenData();
             try {

@@ -1,6 +1,7 @@
 import { Store } from 'lucide-react'
 import { Link } from 'react-router-dom';
 const Table = ({ dealsData }) => {
+    
     return (
         <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
@@ -23,14 +24,14 @@ const Table = ({ dealsData }) => {
                                         <div className="w-10 h-10 rounded-md bg-cyan-50 flex items-center justify-center border border-cyan-100 text-primary">
                                             <Store size={22} className="text-primary" />
                                         </div>
-                                        <div>
+                                        <Link to={`/vendor-details/${item?.shop_id}`}>
                                             <div className="font-bold text-[#525252] text-base">
                                                 {item?.business_name}
                                             </div>
                                             <div className="text-sm font-medium text-[#737373]">
                                                 {item?.category_name}
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 </td>
                                 <td className="px-6 py-4 text-sm text-gray-600">

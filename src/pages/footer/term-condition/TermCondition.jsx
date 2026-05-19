@@ -16,7 +16,7 @@ const TermsAndConditions = () => {
                 <p className="mb-8 text-sm font-semibold uppercase tracking-wide text-[#6B7280]">Effective Date: 10 April 2026</p>
 
                 <Description>
-                    Welcome to Yepp Ads (yeppads.com), a platform that connects shop owners with users to share and discover exclusive deals, discounts, and coupons. By using our website and app, you agree to comply with and be bound by the following Terms and Conditions. Please read these terms carefully before accessing or using Yepp Ads. If you do not agree with these terms, you should not use our platform.
+                    Welcome to Yepp Ads (yeppads.com), a platform that connects shop owners with users to share and discover exclusive ads, discounts, and coupons. By using our website and app, you agree to comply with and be bound by the following Terms and Conditions. Please read these terms carefully before accessing or using Yepp Ads. If you do not agree with these terms, you should not use our platform.
                 </Description>
 
                 <SubTitle>1. Acceptance of Terms</SubTitle>
@@ -26,7 +26,7 @@ const TermsAndConditions = () => {
 
                 <SubTitle>2. Services Provided</SubTitle>
                 <Description>
-                    Yepp Ads allows shop owners to post coupons and deals on our platform for users to view. Users can access and browse these deals without the need for authentication or registration. To post deals, shop owners must purchase a subscription, which grants them the ability to upload and manage their deals on the platform.
+                    Yepp Ads allows shop owners to post coupons and ads on our platform for users to view. Users can access and browse these ads without the need for authentication or registration. To post ads, shop owners must purchase a subscription, which grants them the ability to upload and manage their ads on the platform.
                 </Description>
 
                 <SubTitle>3. Eligibility</SubTitle>
@@ -36,18 +36,18 @@ const TermsAndConditions = () => {
 
                 <SubTitle>4. User Registration and Subscription</SubTitle>
                 <Description>
-                    <strong>Shop Owners:</strong> Shop owners who wish to share deals and coupons must create an account on Yepp Ads and purchase a subscription plan. By purchasing a subscription, the shop owner agrees to adhere to the terms of the subscription and the platform's rules.
+                    <strong>Shop Owners:</strong> Shop owners who wish to share ads and coupons must create an account on Yepp Ads and purchase a subscription plan. By purchasing a subscription, the shop owner agrees to adhere to the terms of the subscription and the platform's rules.
                 </Description>
                 <Description>
-                    <strong>Users:</strong> Users do not need to create an account or register to access and view the available deals and coupons. However, users may choose to register for additional features, such as saving deals or subscribing to updates.
+                    <strong>Users:</strong> Users do not need to create an account or register to access and view the available ads and coupons. However, users may choose to register for additional features, such as saving ads or subscribing to updates.
                 </Description>
 
-                <SubTitle>5. Posting Coupons and Deals</SubTitle>
+                <SubTitle>5. Posting Coupons and Ads</SubTitle>
                 <Description>
                     <ul className="mb-5 ml-5 list-disc space-y-2 text-base leading-7 text-[#4B5563] sm:text-lg sm:leading-8">
-                        <li>Only shop owners who have purchased a valid subscription may post coupons or deals on Yepp Ads.</li>
-                        <li>All deals and coupons posted must be truthful, accurate, and compliant with applicable laws. Yepp Ads reserves the right to review and remove any posted content that violates these Terms and Conditions.</li>
-                        <li>Yepp Ads does not guarantee the availability or validity of any coupons or deals. Shop owners are responsible for updating and removing expired or invalid deals.</li>
+                        <li>Only shop owners who have purchased a valid subscription may post coupons or ads on Yepp Ads.</li>
+                        <li>All ads and coupons posted must be truthful, accurate, and compliant with applicable laws. Yepp Ads reserves the right to review and remove any posted content that violates these Terms and Conditions.</li>
+                        <li>Yepp Ads does not guarantee the availability or validity of any coupons or ads. Shop owners are responsible for updating and removing expired or invalid ads.</li>
                     </ul>
                 </Description>
 
@@ -65,14 +65,14 @@ const TermsAndConditions = () => {
                 <SubTitle>7. Payment and Subscription</SubTitle>
                 <Description>
                     <ul className="mb-5 ml-5 list-disc space-y-2 text-base leading-7 text-[#4B5563] sm:text-lg sm:leading-8">
-                        <li>Shop owners must pay the subscription fee to post deals on Yepp Ads. The subscription fee is non-refundable and will be charged according to the selected plan.</li>
+                        <li>Shop owners must pay the subscription fee to post ads on Yepp Ads. The subscription fee is non-refundable and will be charged according to the selected plan.</li>
                         <li>Subscription plans are subject to change, and Yepp Ads will provide notice of any pricing or policy updates. Shop owners will be notified before any subscription changes are implemented.</li>
                     </ul>
                 </Description>
 
-                <SubTitle>8. No Guarantee of Deal Availability</SubTitle>
+                <SubTitle>8. No Guarantee of Ad Availability</SubTitle>
                 <Description>
-                    While Yepp Ads strives to ensure that the deals and coupons listed on our platform are valid, we do not guarantee that the deals will be available, usable, or as described. Users should verify details directly with the shop owner or merchant before making any purchase.
+                    While Yepp Ads strives to ensure that the ads and coupons listed on our platform are valid, we do not guarantee that the ads will be available, usable, or as described. Users should verify details directly with the shop owner or merchant before making any purchase.
                 </Description>
 
                 <SubTitle>9. Use of Google Analytics</SubTitle>
@@ -102,7 +102,7 @@ const TermsAndConditions = () => {
                 </Description>
                 <ul className="mb-5 ml-5 list-disc space-y-2 text-base leading-7 text-[#4B5563] sm:text-lg sm:leading-8">
                     <li>The inability to access or use the platform</li>
-                    <li>Errors or inaccuracies in the posted deals or coupons</li>
+                    <li>Errors or inaccuracies in the posted ads or coupons</li>
                     <li>Disputes between users and shop owners</li>
                 </ul>
 
