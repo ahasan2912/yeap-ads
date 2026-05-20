@@ -26,7 +26,7 @@ const SearchDeals = ({ searchText }) => {
         <div ref={animationScopeRef} className="bg-gray-50 min-h-[10vh] px-4 py-12.5" data-animate="fade-up">
             <div className="max-w-305 mx-auto">
                 <div className="flex items-start justify-between gap-4 mb-6" data-animate="fade-up">
-                    <h2 className="max-w-[60%] break-words text-base font-bold leading-tight text-[#262626] sm:max-w-none sm:text-2xl md:text-[28px]">
+                    <h2 className="max-w-[60%] wrap-break-word text-base font-bold leading-tight text-[#262626] sm:max-w-none sm:text-2xl md:text-[28px]">
                         {headingText}
                     </h2>
                     <DynamicLocation

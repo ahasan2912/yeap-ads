@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import GoogleMapComponent from '../../vendor/create-shop/components/GoogleMapComponent';
 import { useAddShopOutletMutation } from '../../../features/shop/shopApi';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddLocation = ({ onClose }) => {
+    const navigate = useNavigate();
     const [addShopOutlet, { isLoading }] = useAddShopOutletMutation();
     const [coordinates, setCoordinates] = useState(null);
     const [outlet_name, setOutletName] = useState("");
@@ -28,6 +30,7 @@ const AddLocation = ({ onClose }) => {
         const res = await addShopOutlet(palyLoad);
         if (res?.data?.success) {
             toast.success('Location added successfully!');
+            navigate("/shop-overview");
             onClose();
         }
     };

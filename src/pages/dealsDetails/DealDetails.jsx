@@ -138,7 +138,14 @@ const DealDetails = () => {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3 pt-4 sm:gap-4">
+                            <section className="space-y-2 mt-2">
+                                <h3 className="mb-2 text-lg font-bold text-[#262626] sm:text-xl">Description</h3>
+                                <p className="text-sm leading-relaxed text-[#262626] sm:text-base">
+                                    {description}
+                                </p>
+                            </section>
+
+                            <div className="grid grid-cols-2 gap-3 pt-2 sm:gap-4">
                                 <button onClick={() => handleSaveForLater(_id)} className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-transparent bg-primary px-3 py-3 text-sm font-bold text-white transition-colors hover:bg-secondary cursor-pointer sm:text-base">
                                     {
                                         selectId ? <div className='flex items-center gap-2'>Save For Later <Heart className="h-5 w-5 shrink-0 sm:h-5.5 sm:w-5.5 fill-white" /></div> : <div className='flex items-center gap-2'>Save For Later <Heart className="h-5 w-5 shrink-0 sm:h-5.5 sm:w-5.5" /></div>
@@ -192,12 +199,12 @@ const DealDetails = () => {
                             </ul>
                         </section> */}
                         {/* Description & Included */}
-                        <section className="space-y-2 mt-2">
+                        {/* <section className="space-y-2 mt-2">
                             <h3 className="mb-2 text-lg font-bold text-[#262626] sm:text-xl">Description</h3>
                             <p className="text-sm leading-relaxed text-[#262626] sm:text-base">
                                 {description}
                             </p>
-                        </section>
+                        </section> */}
                     </div>
                 </div>
             </div>

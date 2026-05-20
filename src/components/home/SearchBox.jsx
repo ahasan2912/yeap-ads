@@ -24,11 +24,11 @@ const SearchBox = ({ handleSearch }) => {
             >
                 <div className="flex w-full min-w-0 items-center gap-2 border-b border-gray-100 px-2 pb-2 sm:w-auto sm:grow sm:border-b-0 sm:px-4 sm:pb-0 sm:gap-3">
                     <Search className="h-4 w-4 shrink-0 text-gray-400 sm:h-5 sm:w-5" aria-hidden="true" />
-                    <label htmlFor="deal-search" className="sr-only">Search deals</label>
+                    <label htmlFor="deal-search" className="sr-only">Search ads</label>
                     <input
                         id="deal-search"
                         type="text"
-                        placeholder="Search deals...."
+                        placeholder="Search ads...."
                         className="min-w-0 w-full text-sm sm:text-base outline-none text-gray-700 placeholder-gray-400 bg-transparent"
                         value={formData.query}
                         onChange={(e) => setFormData({ ...formData, query: e.target.value })}

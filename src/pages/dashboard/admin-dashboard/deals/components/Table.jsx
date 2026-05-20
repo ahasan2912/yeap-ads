@@ -1,7 +1,13 @@
 import { Store } from 'lucide-react'
 import { Link } from 'react-router-dom';
 const Table = ({ dealsData }) => {
-    
+    const formatDate = (dateString) => {
+        return new Date(dateString).toLocaleString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        });
+    };
     return (
         <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
@@ -12,12 +18,15 @@ const Table = ({ dealsData }) => {
                         <th className="px-6 py-4 text-base font-semibold text-primary">Impression</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">View</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Status</th>
+                        <th className="px-6 py-4 text-base font-semibold text-primary">Created Date</th>
+                        <th className="px-6 py-4 text-base font-semibold text-primary">Expired Date</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary text-right">Action</th>
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                     {dealsData?.length > 0 ? (
                         dealsData.map((item) => (
+                            console.log(item),
                             <tr key={item?._id} className="hover:bg-gray-50/80 transition-colors">
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-3">
@@ -58,6 +67,12 @@ const Table = ({ dealsData }) => {
                                     >
                                         {item?.status}
                                     </span>
+                                </td>
+                                <td className="px-6 py-4">
+                                    {formatDate(item?.createdAt)}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {formatDate(item?.expiry)}
                                 </td>
                                 <td className="px-6 py-4 text-right">
                                     <Link

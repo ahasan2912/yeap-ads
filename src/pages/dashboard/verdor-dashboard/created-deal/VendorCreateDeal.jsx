@@ -667,7 +667,7 @@ const VendorCreateDeal = () => {
                             {isLoading ? (
                                 <div className="spinner-border animate-spin border-2 border-t-4 border-white w-6 h-6 rounded-full"></div>
                             ) : (
-                                <span className="font-medium text-lg text-[#FFFFFF]">Create Deal</span>
+                                <span className="font-medium text-lg text-[#FFFFFF]">Create Ads</span>
                             )}
                         </button>
                     </div>

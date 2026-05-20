@@ -47,13 +47,13 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
             <X size={24} />
           </button>
         </div>
-        <div className="mx-5 mb-5 px-6 sm:px-4 flex flex-col items-center">
-          <h2 className="text-primary text-2xl font-bold mb-6 text-center">
+        <div className="mx-5 mb-5 px-6 sm:px-4 flex flex-col">
+          <h2 className="text-primary text-2xl font-bold mb-6">
             {title}
           </h2>
-          <div className="w-full space-y-3 mb-4 px-2">
-            <div className="flex justify-between items-center">
-              <span className="text-gray-500 font-medium">Price:</span>
+          <div className="w-full space-y-3 mb-4 ">
+            <div className="flex gap-2 items-center">
+              <span className="text-gray-500 font-semibold text-lg">Price:</span>
               <span className="text-primary font-bold text-xl">${finalPrice.toFixed(2)}</span>
             </div>
             {hasDiscount && (
@@ -77,7 +77,7 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
                 You save ${savedAmount.toFixed(2)}
               </p>
             ) : (
-              <p className="font-medium text-slate-500">
+              <p className="font-medium text-slate-500 text-left">
                 This deal uses a final price only.
               </p>
             )}

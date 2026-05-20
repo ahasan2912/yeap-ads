@@ -1,4 +1,4 @@
-import { Store } from "lucide-react";
+import { MapPin, Store } from "lucide-react";
 import { Link } from "react-router-dom";
 import Countdown from "../Countdown";
 import { getDealPricing } from "../../../../utils/dealPricing";
@@ -21,8 +21,9 @@ const SearchDealCard = ({ deal }) => {
                         {dealDiscount}% off
                     </div>
                 )}
-                <div className="absolute bottom-3 left-3 text-white text-xs bg-black/30 backdrop-blur-sm px-2 py-0.5 rounded-full">
-                    &bull; {distanceMiles.toFixed(2)} miles away
+                <div className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center gap-0.5 rounded-full bg-white/95 px-3 py-1 text-[13px] font-bold text-primary shadow-sm ring-1 ring-white/70">
+                    <MapPin size={14} className="shrink-0" aria-hidden="true" />
+                    <span className="truncate mt-0.5">{distanceMiles.toFixed(2)} miles away</span>
                 </div>
             </div>
 
