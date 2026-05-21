@@ -231,6 +231,12 @@ const CreateDealPlan = () => {
                                             Invalid voucher code. Please try again.
                                         </p>
                                     )}
+
+                                    {error?.data?.message === 'VOUCHER_EXPIRED' && (
+                                        <p className="text-xs text-red-500 mt-1.5 ml-1 font-medium">
+                                            Invalid voucher code. Please try again.
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/* Checkout */}
