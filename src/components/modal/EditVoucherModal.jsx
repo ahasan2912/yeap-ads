@@ -97,12 +97,19 @@ const EditVoucherModal = ({ isOpen, toggleModal, editId }) => {
                             <p className="text-sm text-red-500 ml-4">{errors.voucher_code.message}</p>
                         )}
                         <div className="relative">
-                            <label className="text-left text-gray-800">Voucher discount</label>
+                            <label className="text-left text-gray-800">
+                                Voucher discount
+                            </label>
+
                             <input
                                 type="number"
+                                step="any"
                                 placeholder="Discount Value"
                                 className="mt-2 w-full px-6 py-3 rounded-full border border-slate-200 focus:outline-none focus:ring-1 focus:ring-primary"
-                                {...register('voucher_discount', { required: 'Discount value required' })}
+                                {...register('voucher_discount', {
+                                    required: 'Discount value required',
+                                    valueAsNumber: true,
+                                })}
                             />
                         </div>
                         {errors.voucher_discount && (
