@@ -84,10 +84,6 @@ const DealCard = ({ deal, compact = false, imageSize = "normal" }) => {
                         {dealDiscount}% off
                     </div>
                 )}
-                <div className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center gap-0.5 rounded-full bg-white/95 px-3 py-1 text-[13px] font-bold text-primary shadow-sm ring-1 ring-white/70">
-                    <MapPin size={14} className="shrink-0" aria-hidden="true" />
-                    <span className="truncate mt-0.5">{distanceMiles.toFixed(2)} miles away</span>
-                </div>
             </div>
 
             <div className="flex flex-1 flex-col p-4">
@@ -100,7 +96,7 @@ const DealCard = ({ deal, compact = false, imageSize = "normal" }) => {
                     <span className="min-w-0 truncate">{shop?.business_name}</span>
                 </div>
 
-                <div className="mt-4 flex min-w-0 flex-wrap items-start justify-between gap-3">
+                <div className="mt-4 flex min-w-0 flex-col items-start justify-between gap-3">
                     <div className="flex min-w-0 flex-wrap items-baseline gap-x-1 gap-y-0.5">
                         <span className="text-2xl font-bold leading-none text-[#262626]">
                             ${finalPrice.toFixed(2)}
@@ -111,6 +107,10 @@ const DealCard = ({ deal, compact = false, imageSize = "normal" }) => {
                                 ${price.toFixed(2)}
                             </span>
                         )}
+                    </div>
+                    <div className="inline-flex max-w-[calc(100%-1.5rem)] items-center gap-0.5 text-[13px] font-bold text-primary ">
+                        <MapPin size={14} className="shrink-0" aria-hidden="true" />
+                        <span className="truncate mt-0.5">{distanceMiles.toFixed(2)} miles away</span>
                     </div>
                     <Countdown countdown={promotedUntil} />
                 </div>
@@ -124,3 +124,5 @@ const DealCard = ({ deal, compact = false, imageSize = "normal" }) => {
 };
 
 export default DealCard;
+
+

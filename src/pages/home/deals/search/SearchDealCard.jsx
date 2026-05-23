@@ -21,10 +21,6 @@ const SearchDealCard = ({ deal }) => {
                         {dealDiscount}% off
                     </div>
                 )}
-                <div className="absolute bottom-3 left-3 inline-flex max-w-[calc(100%-1.5rem)] items-center gap-0.5 rounded-full bg-white/95 px-3 py-1 text-[13px] font-bold text-primary shadow-sm ring-1 ring-white/70">
-                    <MapPin size={14} className="shrink-0" aria-hidden="true" />
-                    <span className="truncate mt-0.5">{distanceMiles.toFixed(2)} miles away</span>
-                </div>
             </div>
 
             <div className="flex flex-1 flex-col px-2 py-4">
@@ -33,12 +29,11 @@ const SearchDealCard = ({ deal }) => {
                 </h3>
 
                 <div className="mt-2 flex min-w-0 items-center gap-1 text-sm text-[#A3A3A3]">
-                    <span className="shrink-0 opacity-70"><Store size={17} className="text-[#A3A3A3]" aria-hidden="true" /></span>
+                    <span className="shrink-0 opacity-70"><Store size={17} className="text-primary" aria-hidden="true" /></span>
                     <span className="min-w-0 truncate">{deal?.shop?.business_name}</span>
                 </div>
-
-                <div className="mt-3 flex min-w-0 flex-wrap items-start justify-between gap-2">
-                    <div className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                <div className="mt-3 flex min-w-0 flex-col items-start justify-between gap-2">
+                    <div className="flex min-w-0 flex-col items-baseline gap-x-2 gap-y-0.5">
                         <span className="text-xl font-bold text-[#262626]">
                             ${finalPrice.toFixed(2)}
                         </span>
@@ -48,6 +43,10 @@ const SearchDealCard = ({ deal }) => {
                                 ${regularPrice.toFixed(1)}
                             </span>
                         )}
+                    </div>
+                    <div className="inline-flex max-w-[calc(100%-1.5rem)] items-center gap-0.5 py-1 text-[13px] font-bold text-primary ring-white/70">
+                        <MapPin size={14} className="shrink-0" aria-hidden="true" />
+                        <span className="truncate mt-0.5">{distanceMiles.toFixed(2)} miles away</span>
                     </div>
                     <Countdown countdown={promotedUntil} />
                 </div>
