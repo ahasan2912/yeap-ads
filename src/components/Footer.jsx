@@ -14,10 +14,10 @@ const Footer = () => {
                                     Grab the app now and discover discounts around you. Available on iOS and Android.
                                 </p>
                                 <div className="flex flex-col gap-2 min-[420px]:flex-row">
-                                    <Link to='https://play.google.com/store/apps/details?id=com.gamma.scan'>
+                                    <Link to='https://play.google.com/store/apps/details?id=agency.beuptech.yepp'>
                                         <img className='w-36 h-12 object-cover' src={images.googleStore} alt="google-play-store" />
                                     </Link>
-                                    <Link to='https://apps.apple.com/us/app/scanner-app-genius-scan/id377672876'>
+                                    <Link to='https://apps.apple.com/us/app/yepp-ads/id6760607013'>
                                         <img className='w-36 h-12 object-cover' src={images.appleStore} alt="apple-play-store" />
                                     </Link>
                                 </div>
@@ -49,3 +49,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
