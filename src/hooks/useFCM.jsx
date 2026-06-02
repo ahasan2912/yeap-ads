@@ -6,8 +6,9 @@ export const requestPermissionAndGetToken = async () => {
     try {
         const permission = await Notification.requestPermission();
         if (permission === "granted") {
+
             const token = await getToken(messaging, {
-                vapidKey: "BKRxE7KBHntVAc-BdJViSjPAZNiEfu9ArZT41Kl-JBc_XUp5gnsZJmlqkjYyGrmNmZz2tUKVBc-p-mjDrEyyGe8", // Replace with your VAPID Key
+                vapidKey: import.meta.env.VITE_WEB_PUSH_CERTIFICATE
             });
 
             if (token) {

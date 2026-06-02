@@ -44,7 +44,7 @@ const getVendorPaymentHistoryQueryUrl = ({
   );
   params.append(
     "fields",
-    "deal,plan,transaction_id,currency,provider,payment_status,createdAt,voucher_applied,invoice_url"
+    "deal,plan,transaction_id,amount,currency,provider,payment_status,createdAt,voucher_applied,invoice_url"
   );
   return `/payment/transaction_history?${params.toString()}`;
 };

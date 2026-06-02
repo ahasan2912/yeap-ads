@@ -124,12 +124,12 @@ const SendMessage = () => {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="bg-primary hover:bg-secondary text-white font-bold py-2 sm:px-20 rounded-md shadow-xl shadow-[#4BBDCF]/20 transition-all transform active:scale-95 text-xl w-full flex items-center justify-center"
+                                className="bg-primary hover:bg-secondary text-white font-bold py-2 sm:px-10 rounded-md shadow-xl shadow-[#4BBDCF]/20 transition-all transform active:scale-95 text-xl w-full flex items-center justify-center"
                             >
                                 {isLoading ? (
                                     <div className="spinner-border animate-spin border-2 border-t-4 border-white w-6 h-6 rounded-full"></div>
                                 ) : (
-                                    <span className="font-medium text-lg text-[#FFFFFF]">
+                                    <span className="font-medium text-base md:text-lg text-[#FFFFFF]">
                                         Send Notification
                                     </span>
                                 )}

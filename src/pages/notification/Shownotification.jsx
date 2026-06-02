@@ -20,7 +20,7 @@ const formatNotificationDate = (date) => {
     }).format(parsedDate);
 };
 
-const pageClassName = "flex min-h-screen items-center justify-center bg-[#F8FAFC] px-4 py-16";
+const pageClassName = "flex min-h-[calc(100vh-485px)] items-center justify-center bg-[#F8FAFC] px-4 py-16";
 const panelClassName = "w-full max-w-2xl rounded-lg border border-slate-200 bg-white p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-8";
 
 const ShowNotification = () => {
@@ -52,7 +52,7 @@ const ShowNotification = () => {
                         Open a notification from the bell to read the full message.
                     </p>
                     <Link to="/" className="mt-6 inline-flex rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-secondary">
-                        Back to Local Deals
+                        Back to Local Ads
                     </Link>
                 </section>
             </main>
@@ -93,7 +93,7 @@ const ShowNotification = () => {
                         We could not load this notification right now.
                     </p>
                     <Link to="/" className="mt-6 inline-flex rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-secondary">
-                        Back to Local Deals
+                        Back to Local Ads
                     </Link>
                 </section>
             </main>
@@ -122,7 +122,7 @@ const ShowNotification = () => {
                     </span>
                 </div>
 
-                <h1 className="mt-7 text-2xl font-bold leading-tight text-[#262626] sm:text-3xl">
+                <h1 className="mt-7 text-2xl font-bold leading-tight text-[#262626]">
                     {notification?.title}
                 </h1>
                 <p className="mt-5 whitespace-pre-wrap text-base leading-8 text-[#525252]">

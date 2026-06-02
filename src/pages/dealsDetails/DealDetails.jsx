@@ -155,7 +155,7 @@ const DealDetails = () => {
                                     Show Coupon
                                 </button>
                             </div>
-
+z
                             <ShowCuponModal
                                 isOpen={isOpen}
                                 setIsOpen={setIsOpen}
