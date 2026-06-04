@@ -123,7 +123,7 @@ const DealCard = ({ deal }) => {
                                 className={actionButtonClasses}>
                                 <span className="absolute inset-0 bg-secondary -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
                                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                                    Active
+                                    Activated
                                 </span>
                             </Link>
                             <Link
@@ -152,7 +152,7 @@ const DealCard = ({ deal }) => {
                                 className={actionButtonClasses}>
                                 <span className="absolute inset-0 bg-secondary -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
                                 <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                                    Reactivate
+                                    Reactivated
                                 </span>
                             </Link>
                             <Link

@@ -155,7 +155,6 @@ const DealDetails = () => {
                                     Show Coupon
                                 </button>
                             </div>
-z
                             <ShowCuponModal
                                 isOpen={isOpen}
                                 setIsOpen={setIsOpen}
@@ -177,34 +176,6 @@ z
                             <h3 className="font-bold text-xl text-[#262626] mb-2">How to Redeem</h3>
                             <Redeem />
                         </section>
-                        {/* <section>
-                            <h3 className="mb-2 text-lg font-bold text-[#262626] sm:text-xl">Highlight</h3>
-                            <ul className="space-y-2">
-                                {highlight.map((text, i) => (
-                                    <li key={i} className="flex items-center gap-2 text-sm text-[#262626] sm:text-base">
-                                        <span className="h-1.5 w-1.5 bg-[#6e6a6a] rounded-full" /> {text}
-                                    </li>
-                                ))}
-                            </ul>
-                        </section> */}
-
-                        {/* <section>
-                            <h3 className="mb-2 mt-2 text-lg font-bold text-[#262626] sm:text-xl">Tags</h3>
-                            <ul className="space-y-2">
-                                {tags.map((text, i) => (
-                                    <li key={i} className="flex items-center gap-2 text-sm text-[#262626] sm:text-base">
-                                        <span className="h-1.5 w-1.5 bg-[#6e6a6a] rounded-full" /> {text}
-                                    </li>
-                                ))}
-                            </ul>
-                        </section> */}
-                        {/* Description & Included */}
-                        {/* <section className="space-y-2 mt-2">
-                            <h3 className="mb-2 text-lg font-bold text-[#262626] sm:text-xl">Description</h3>
-                            <p className="text-sm leading-relaxed text-[#262626] sm:text-base">
-                                {description}
-                            </p>
-                        </section> */}
                     </div>
                 </div>
             </div>

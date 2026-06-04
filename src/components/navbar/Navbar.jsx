@@ -144,7 +144,7 @@ const Navbar = () => {
                                 isAuthenticated ?
                                     <button
                                         onClick={hanldeLogOut}
-                                        className={`bg-primary hover:bg-secondary text-base text-[#FFFFFF] font-semibold tracking-wider transition-all duration-300 px-6 py-2.5 cursor-pointer 
+                                        className={`bg-primary hover:bg-secondary text-base text-[#FFFFFF] font-semibold tracking-wider transition-all duration-300 px-6 py-2.5 cursor-pointer
                                         ${(user?.role === 'ADMIN' || user?.role === 'VENDOR') ? 'rounded-l-full' : 'rounded-full'}`}
                                     >
                                         LogOut
@@ -158,10 +158,10 @@ const Navbar = () => {
                                     </NavLink>
                             }
                             {
-                                user?.role === 'ADMIN' && <NavLink to='/dashboard/admin-dashboard' className='bg-primary hover:bg-secondary text-[#FFFFFF] font-semibold tracking-wider transition-all duration-300 px-6 py-2.5 rounded-r-full cursor-pointer'>Dashboard</NavLink>
+                                user?.role === 'ADMIN' && <NavLink to='/dashboard/admin-dashboard' className='border-l border-white/70 bg-primary hover:bg-secondary text-[#FFFFFF] font-semibold tracking-wider transition-all duration-300 px-6 py-2.5 rounded-r-full cursor-pointer'>Dashboard</NavLink>
                             }
                             {
-                                user?.role === 'VENDOR' && <NavLink to='/shop-overview' className='bg-primary hover:bg-secondary text-base text-[#FFFFFF] font-semibold tracking-wider transition-all duration-300 px-6 py-2.5 rounded-r-full cursor-pointer'>Dashboard</NavLink>
+                                user?.role === 'VENDOR' && <NavLink to='/shop-overview' className='border-l border-white/70 bg-primary hover:bg-secondary text-base text-[#FFFFFF] font-semibold tracking-wider transition-all duration-300 px-6 py-2.5 rounded-r-full cursor-pointer'>Dashboard</NavLink>
                             }
                         </div>
                         <div className='flex justify-center items-center gap-5 cursor-pointer mr-16 md:mr-0'>
@@ -276,3 +276,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

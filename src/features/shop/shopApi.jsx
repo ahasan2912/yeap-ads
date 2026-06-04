@@ -96,7 +96,7 @@ export const shopApi = apiSlice.injectEndpoints({
         body: data,
         credentials: "include",
       }),
-      invalidatesTags: ["Shops"],
+      invalidatesTags: ["Deals"],
     }),
   }),
 });

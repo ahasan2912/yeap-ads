@@ -28,7 +28,7 @@ const SearchBox = ({ handleSearch }) => {
                     <input
                         id="deal-search"
                         type="text"
-                        placeholder="Search ads...."
+                        placeholder="Search by ads name, shop name or city"
                         className="min-w-0 w-full text-sm sm:text-base outline-none text-gray-700 placeholder-gray-400 bg-transparent"
                         value={formData.query}
                         onChange={(e) => setFormData({ ...formData, query: e.target.value })}

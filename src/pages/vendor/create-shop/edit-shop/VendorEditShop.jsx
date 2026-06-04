@@ -36,6 +36,7 @@ const VendorEditShop = () => {
         if (isSuccess) {
             toast.success("Shop updated successfully!");
             navigate("/shop-overview");
+            window.location.reload();
         }
         if (error) {
             const message = error?.data?.message || "Shop update failed!";

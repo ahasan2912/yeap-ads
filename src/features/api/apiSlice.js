@@ -29,8 +29,6 @@ const apiSlice = createApi({
   baseQuery: baseQueryWithErrorHandling,
   tagTypes: [
     "User",
-    "Shops",
-    "Shop",
     "Deals",
     "Deal",
     "AllDeals",

@@ -15,7 +15,7 @@ export const dealApi = apiSlice.injectEndpoints({
             invalidatesTags: ["Deals"],
         }),
         getAllDeal: builder.query({
-            query: ({ longitude, latitude, page = 1, limit = 10 }) => ({
+            query: ({ longitude, latitude, page = 1, limit = 15 }) => ({
                 url: `/service/deals/${longitude}/${latitude}?page=${page}&limit=${limit}`,
                 method: "GET",
                 credentials: "include",

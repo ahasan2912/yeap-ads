@@ -5,7 +5,7 @@ import DealCard from './DealCard';
 import useUserLocation from '../../../hooks/useUserLocation';
 import DynamicLocation from '../../../components/location/DynamicLocation';
 import { useGsapAnimations } from '../../../hooks/useGsapAnimations';
-const DEALS_PER_BATCH = Number(import.meta.env.VITE_ROWS_PER_PAGE) || 8;
+const DEALS_PER_BATCH = Number(import.meta.env.VITE_ROWS_PER_PAGE) || 15;
 
 const getDealsFromResponse = (response) => response?.data?.deals ?? [];
 
@@ -172,8 +172,6 @@ const Deals = () => {
                                         <DealCard
                                             key={deal?._id || index}
                                             deal={deal}
-                                            compact
-                                            imageSize={index % 3 === 1 ? "tall" : "normal"}
                                         />
                                     ))}
                                 </div>
