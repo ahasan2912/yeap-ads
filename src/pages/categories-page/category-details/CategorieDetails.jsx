@@ -37,7 +37,7 @@ const CategorieDetails = () => {
     );
 
     return (
-        <div ref={animationScopeRef} className="bg-gray-50 min-h-[65vh] pt-6 pb-36">
+        <div ref={animationScopeRef} className="bg-gray-50 min-h-[65vh] pt-6 pb-2">
             <div className="bg-gray-50" data-animate="fade-up">
                 <div className="max-w-305 mx-auto px-2 sm:px-4 md:px-8 flex items-center justify-between py-3 mt-5">
                     <h2 className="text-base md:text-2xl font-bold text-[#262626]">{categoryName?.category_name}</h2>
