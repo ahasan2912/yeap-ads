@@ -14,8 +14,47 @@ import { useGetVendorDetailsQuery } from "../../../../features/shop/shopApi";
 import { ChevronDown, MapPin, X } from "lucide-react";
 import { getDealPricing } from "../../../../utils/dealPricing";
 
+const CODE_IMAGE_REQUIREMENTS = {
+    qr_code: {
+        width: 500,
+        height: 500,
+        label: "QR code",
+        activeField: "qr",
+        sizeMessage: "QR code image must be 500 x 500",
+    },
+    upc_code: {
+        width: 800,
+        height: 400,
+        label: "UPC code",
+        activeField: "upc",
+        sizeMessage: "UPC code image must be 800 x 400",
+    },
+};
+
 const hasCouponCodeValue = (data) => {
     return Boolean(data?.couponCode?.trim() || data?.qr_code?.[0] || data?.upc_code?.[0]);
+};
+
+const getImageDimensions = (file) => {
+    return new Promise((resolve, reject) => {
+        const imageUrl = URL.createObjectURL(file);
+        const image = new Image();
+
+        image.onload = () => {
+            URL.revokeObjectURL(imageUrl);
+            resolve({
+                width: image.naturalWidth,
+                height: image.naturalHeight,
+            });
+        };
+
+        image.onerror = () => {
+            URL.revokeObjectURL(imageUrl);
+            reject(new Error("Invalid image file"));
+        };
+
+        image.src = imageUrl;
+    });
 };
 
 const VendorCreateDeal = () => {
@@ -131,27 +170,69 @@ const VendorCreateDeal = () => {
         return true;
     };
 
-    const validateCouponCodes = (data) => {
-        if (hasCouponCodeValue(data)) {
-            clearErrors("couponCodes");
-            return true;
+    const validateCodeImages = async (data) => {
+        clearErrors(["couponCodes", "qr_code", "upc_code"]);
+
+        if (!hasCouponCodeValue(data)) {
+            setOpenDropdown(true);
+            setActiveField((currentField) => currentField || "coupon");
+            setError("couponCodes", {
+                type: "manual",
+                message: "Enter a coupon code, upload a QR image, or upload a UPC image",
+            });
+
+            return false;
         }
 
-        setOpenDropdown(true);
-        setActiveField((currentField) => currentField || "coupon");
-        setError("couponCodes", {
-            type: "manual",
-            message: "Enter a coupon code, upload a QR image, or upload a UPC image",
-        });
+        for (const [fieldName, requirement] of Object.entries(CODE_IMAGE_REQUIREMENTS)) {
+            const file = data?.[fieldName]?.[0];
 
-        return false;
+            if (!file) {
+                continue;
+            }
+
+            try {
+                const dimensions = await getImageDimensions(file);
+
+                if (dimensions.width !== requirement.width || dimensions.height !== requirement.height) {
+                    setOpenDropdown(true);
+                    setActiveField(requirement.activeField);
+                    setError(fieldName, {
+                        type: "manual",
+                        message: requirement.sizeMessage,
+                    });
+                    setError("couponCodes", {
+                        type: "manual",
+                        message: `${requirement.label} image is not the required size`,
+                    });
+
+                    return false;
+                }
+            } catch {
+                setOpenDropdown(true);
+                setActiveField(requirement.activeField);
+                setError(fieldName, {
+                    type: "manual",
+                    message: `Upload a valid ${requirement.label} image`,
+                });
+                setError("couponCodes", {
+                    type: "manual",
+                    message: `Upload a valid ${requirement.label} image`,
+                });
+
+                return false;
+            }
+        }
+
+        clearErrors(["couponCodes", "qr_code", "upc_code"]);
+        return true;
     };
 
     const onSubmit = async (data) => {
         const isImagesValid = validateImages();
-        const isCouponCodesValid = validateCouponCodes(data);
+        const isCodeImagesValid = await validateCodeImages(data);
 
-        if (!isImagesValid || !isCouponCodesValid) return;
+        if (!isImagesValid || !isCodeImagesValid) return;
 
         const couponCode = data?.couponCode?.trim();
         const qrCodeFile = data?.qr_code?.[0];
@@ -201,20 +282,25 @@ const VendorCreateDeal = () => {
 
     const onInvalid = () => {
         validateImages();
-        validateCouponCodes(getValues());
+        validateCodeImages(getValues());
     };
 
     const qrCodeInput = register("qr_code");
     const upcCodeInput = register("upc_code");
 
-    const handleCodeFileChange = (event, setPreview) => {
+    const handleCodeFileChange = (event, setPreview, fieldName) => {
         const file = event.target.files?.[0];
         setPreview(file ? URL.createObjectURL(file) : "");
+
+        if (file) {
+            clearErrors([fieldName, "couponCodes"]);
+        }
     };
 
     const removeCodeFile = (fieldName, inputRef, setPreview) => {
         setValue(fieldName, null, { shouldValidate: true });
         setPreview("");
+        clearErrors([fieldName, "couponCodes"]);
 
         if (inputRef.current) {
             inputRef.current.value = "";
@@ -525,7 +611,7 @@ const VendorCreateDeal = () => {
                                         </div>
                                         {errors.couponCodes && (
                                             <p className="text-red-500 text-sm mt-1 font-normal">
-                                                At least one field is required
+                                                {errors.couponCodes.message}
                                             </p>
                                         )}
                                     </div>
@@ -586,10 +672,15 @@ const VendorCreateDeal = () => {
                                                     }}
                                                     onChange={(event) => {
                                                         qrCodeInput.onChange(event);
-                                                        handleCodeFileChange(event, setQrPreview);
+                                                        handleCodeFileChange(event, setQrPreview, "qr_code");
                                                     }}
-                                                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-[#262626] outline-none transition-all file:mr-4 file:rounded-full file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white focus:border-primary focus:ring-4 focus:ring-primary/10"
+                                                    className={`w-full rounded-lg border bg-white px-3 py-2 text-[#262626] outline-none transition-all file:mr-4 file:rounded-full file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white focus:ring-4 ${errors.qr_code ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-slate-300 focus:border-primary focus:ring-primary/10"}`}
                                                 />
+                                                {errors.qr_code && (
+                                                    <p className="mt-1 text-sm text-red-500">
+                                                        {errors.qr_code.message}
+                                                    </p>
+                                                )}
                                                 {qrPreview && (
                                                     <div className="mt-3 w-fit rounded-lg border border-slate-200 bg-slate-50 p-2">
                                                         <div className="relative h-28 w-40 overflow-hidden rounded-md bg-white">
@@ -628,10 +719,15 @@ const VendorCreateDeal = () => {
                                                     }}
                                                     onChange={(event) => {
                                                         upcCodeInput.onChange(event);
-                                                        handleCodeFileChange(event, setUpcPreview);
+                                                        handleCodeFileChange(event, setUpcPreview, "upc_code");
                                                     }}
-                                                    className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-[#262626] outline-none transition-all file:mr-4 file:rounded-full file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white focus:border-primary focus:ring-4 focus:ring-primary/10"
+                                                    className={`w-full rounded-lg border bg-white px-3 py-2 text-[#262626] outline-none transition-all file:mr-4 file:rounded-full file:border-0 file:bg-primary file:px-4 file:py-2 file:text-white focus:ring-4 ${errors.upc_code ? "border-red-500 focus:border-red-500 focus:ring-red-100" : "border-slate-300 focus:border-primary focus:ring-primary/10"}`}
                                                 />
+                                                {errors.upc_code && (
+                                                    <p className="mt-1 text-sm text-red-500">
+                                                        {errors.upc_code.message}
+                                                    </p>
+                                                )}
                                                 {upcPreview && (
                                                     <div className="mt-3 w-fit rounded-lg border border-slate-200 bg-slate-50 p-2">
                                                         <div className="relative h-28 w-48 overflow-hidden rounded-md bg-white">

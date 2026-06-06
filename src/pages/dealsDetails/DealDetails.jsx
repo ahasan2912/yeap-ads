@@ -145,13 +145,13 @@ const DealDetails = () => {
                                 </p>
                             </section>
 
-                            <div className="grid grid-cols-2 gap-3 pt-2 sm:gap-4">
-                                <button onClick={() => handleSaveForLater(_id)} className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-transparent bg-primary px-3 py-3 text-sm font-bold text-white transition-colors hover:bg-secondary cursor-pointer sm:text-base">
+                            <div className="grid grid-cols-2 gap-2 pt-2 sm:gap-4">
+                                <button onClick={() => handleSaveForLater(_id)} className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-transparent bg-primary px-1 sm:px-3 py-2 sm:py-3 text-sm font-bold text-white transition-colors hover:bg-secondary cursor-pointer sm:text-base">
                                     {
                                         selectId ? <div className='flex items-center gap-2'>Save For Later <Heart className="h-5 w-5 shrink-0 sm:h-5.5 sm:w-5.5 fill-white" /></div> : <div className='flex items-center gap-2'>Save For Later <Heart className="h-5 w-5 shrink-0 sm:h-5.5 sm:w-5.5" /></div>
                                     }
                                 </button>
-                                <button onClick={() => setIsOpen(true)} className="min-h-12 w-full rounded-full bg-primary px-3 py-3 text-sm font-bold text-white shadow-md transition-colors hover:bg-secondary cursor-pointer sm:text-base">
+                                <button onClick={() => setIsOpen(true)} className="min-h-12 w-full rounded-full bg-primary px-1 sm:px-3 py-2 sm:py-3 text-sm font-bold text-white shadow-md transition-colors hover:bg-secondary cursor-pointer sm:text-base">
                                     Show Coupon
                                 </button>
                             </div>

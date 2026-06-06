@@ -1,6 +1,73 @@
-import { Store } from 'lucide-react'
+import { MoreHorizontal, Store, X } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useAdminBanUserMutation, useAdminUnBanUserMutation } from '../../../../../features/ban/banApi';
+import BanModal from './BanModal';
+
 const Table = ({ dealsData }) => {
+    const [openDropdownId, setOpenDropdownId] = useState(null);
+    const [banDealId, setBanDealId] = useState(null);
+    const [banReason, setBanReason] = useState("");
+    const dropdownRef = useRef(null);
+    const [adminBanUser, { isLoading: isBanUpdating }] = useAdminBanUserMutation();
+    const [adminUnBanUser, { isLoading: isUnBanUpdating }] = useAdminUnBanUserMutation();
+    const isStatusUpdating = isBanUpdating || isUnBanUpdating;
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setOpenDropdownId(null);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    const openBanModal = (dealId) => {
+        setOpenDropdownId(null);
+        setBanDealId(dealId);
+        setBanReason("");
+    };
+
+    const closeBanModal = () => {
+        setBanDealId(null);
+        setBanReason("");
+    };
+
+    const handleBanDeal = async () => {
+        const trimmedReason = banReason.trim();
+
+        if (!trimmedReason) {
+            toast.error("Ban reason is required");
+            return;
+        }
+
+        try {
+            const res = await adminBanUser({
+                dealId: banDealId,
+                data: { reason: trimmedReason },
+            }).unwrap();
+
+            toast.success(res?.message || "Ad banned successfully");
+            closeBanModal();
+        } catch (error) {
+            toast.error(error?.data?.message || "Failed to ban ad");
+        }
+    };
+
+    const handleEnableDeal = async (dealId) => {
+        setOpenDropdownId(null);
+
+        try {
+            const res = await adminUnBanUser(dealId).unwrap();
+            toast.success(res?.message || "Ad enabled successfully");
+        } catch (error) {
+            toast.error(error?.data?.message || "Failed to enable ad");
+        }
+    };
+
     const formatDate = (dateString) => {
         return new Date(dateString).toLocaleString("en-US", {
             year: "numeric",
@@ -8,6 +75,12 @@ const Table = ({ dealsData }) => {
             day: "numeric",
         });
     };
+    const statusStyles = {
+        Active: "bg-[#DCFCE7] text-[#22C55E]",
+        New: "bg-[#FEF9C3] text-[#CA8A04]",
+        Banned: "bg-[#FEE2E2] text-[#DC2626]",
+    };
+
     return (
         <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
@@ -26,7 +99,6 @@ const Table = ({ dealsData }) => {
                 <tbody className="divide-y divide-gray-100">
                     {dealsData?.length > 0 ? (
                         dealsData.map((item) => (
-                            console.log(item),
                             <tr key={item?._id} className="hover:bg-gray-50/80 transition-colors">
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-3">
@@ -44,9 +116,10 @@ const Table = ({ dealsData }) => {
                                     </div>
                                 </td>
                                 <td className="px-6 py-4 text-sm text-gray-600">
-                                    {item?.title}
+                                    <Link to={`/deal-details/${item?._id}`} className="underline transition-colors hover:text-primary">
+                                        {item?.title}
+                                    </Link>
                                 </td>
-
                                 <td className="px-6 py-4 text-sm text-gray-600">
                                     {item?.impressions}
                                 </td>
@@ -56,13 +129,7 @@ const Table = ({ dealsData }) => {
 
                                 <td className="px-6 py-4">
                                     <span
-                                        className={`px-2.5 py-1 rounded-full text-sm font-semibold ${item?.status === "Active"
-                                            ? "bg-[#DCFCE7] text-[#22C55E]"
-                                            : item?.status === "New"
-                                                ? "bg-[#FEF9C3] text-[#CA8A04]"
-                                                : item?.status === "Expired"
-                                                    ? "bg-[#FEE2E2] text-[#DC2626]"
-                                                    : "bg-gray-100 text-gray-500"
+                                        className={`px-2.5 py-1 rounded-full text-sm font-semibold ${statusStyles[item?.status] || "bg-[#FFF7ED] text-[#EA580C]"
                                             }`}
                                     >
                                         {item?.status}
@@ -75,26 +142,54 @@ const Table = ({ dealsData }) => {
                                     {formatDate(item?.expiry)}
                                 </td>
                                 <td className="px-6 py-4 text-right">
-                                    <Link
-                                        to={`/deal-details/${item?._id}`}
-                                        className="relative inline-block overflow-hidden px-4 py-1.5 rounded-md font-semibold text-gray-600 border border-gray-300 group cursor-pointer transition-all duration-400">
-                                        <span className="absolute inset-0 bg-secondary -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></span>
-                                        <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                                            Details
-                                        </span>
-                                    </Link>
+                                    <div className="relative inline-block" ref={openDropdownId === item?._id ? dropdownRef : null}>
+                                        <button
+                                            onClick={() =>
+                                                setOpenDropdownId(openDropdownId === item?._id ? null : item?._id)
+                                            }
+                                            className="text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-md hover:bg-gray-100"
+                                        >
+                                            <MoreHorizontal className="w-5 h-5" />
+                                        </button>
+
+                                        {openDropdownId === item?._id && (
+                                            <div className="absolute right-0 -top-22 mt-2 w-40 pb-1 bg-white border border-gray-200 rounded-lg shadow-lg z-20 overflow-hidden">
+                                                <button
+                                                    onClick={() => openBanModal(item?._id)}
+                                                    disabled={isStatusUpdating}
+                                                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 font-medium disabled:cursor-not-allowed disabled:opacity-60"
+                                                >
+                                                    Banned
+                                                </button>
+                                                <button
+                                                    onClick={() => handleEnableDeal(item?._id)}
+                                                    disabled={isStatusUpdating}
+                                                    className="w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-green-50 font-medium disabled:cursor-not-allowed disabled:opacity-60"
+                                                >
+                                                    Enabled
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
                                 </td>
                             </tr>
                         ))
                     ) : (
                         <tr>
-                            <td colSpan="6" className="px-6 py-10 text-center text-gray-500">
-                                No vendors found
+                            <td colSpan="8" className="px-6 py-10 text-center text-gray-500">
+                                No ads found
                             </td>
                         </tr>
                     )}
                 </tbody>
             </table>
+            {banDealId && <BanModal 
+                closeBanModal={() => setBanDealId(null)}
+                banReason={banReason}
+                setBanReason={setBanReason}
+                handleBanDeal={handleBanDeal}
+                isBanUpdating={isBanUpdating}
+            />}
         </div>
     );
 };

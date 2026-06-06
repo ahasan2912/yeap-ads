@@ -15,7 +15,7 @@ const Table = ({ paymentData }) => {
                         <th className="px-6 py-4 text-base font-semibold text-primary">Plan</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Status</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Amount</th>
-                        <th className="px-6 py-4 text-base font-semibold text-primary">Provider</th>
+                        {/* <th className="px-6 py-4 text-base font-semibold text-primary">Provider</th> */}
                         <th className="px-6 py-4 text-base font-semibold text-primary">Date</th>
                         <th className="px-6 py-4 text-base font-semibold text-primary">Invoice</th>
                     </tr>
@@ -67,13 +67,17 @@ const Table = ({ paymentData }) => {
                                 <td className="px-6 py-4 text-sm font-bold text-[#525252]">
                                     ${item?.amount?.toFixed(2)}
                                 </td>
-                                <td className="px-6 py-4 text-sm font-bold text-[#525252]">
+                                {/* <td className="px-6 py-4 text-sm font-bold text-[#525252]">
                                     {item?.provider
                                         ? item.provider.charAt(0).toUpperCase() + item.provider.slice(1).toLowerCase()
                                         : ""}
-                                </td>
+                                </td> */}
                                 <td className="px-6 py-4 text-sm font-semibold text-[#525252]">
-                                    {new Date(item?.createdAt).toLocaleDateString('en-GB')}
+                                    {new Date(item?.createdAt).toLocaleDateString('en-US', {
+                                        month: '2-digit',
+                                        day: '2-digit',
+                                        year: '2-digit',
+                                    })}
                                 </td>
                                 <td onClick={() => showInvoice(item?.invoice_url)} className="px-6 py-4 text-sm cursor-pointer font-semibold text-[#525252] hover:text-[#4CAF50]">
                                     <Eye />

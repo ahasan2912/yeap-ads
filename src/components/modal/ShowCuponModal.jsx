@@ -39,7 +39,7 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
         className="fixed inset-0 bg-slate-900/30 backdrop-blur-xs transition-opacity cursor-pointer"
         onClick={() => setIsOpen(false)}
       />
-      <div className="relative bg-white w-full max-w-2xl rounded-xl overflow-hidden transform transition-all animate-in fade-in zoom-in duration-300">
+      <div className="relative bg-white w-full max-w-2xl rounded-xl overflow-hidden transform transition-all animate-in fade-in zoom-in duration-300 px-0 sm:px-6">
         <div className="flex justify-end items-center px-5 pt-6 pb-2">
           <button
             onClick={() => setIsOpen(false)}
@@ -47,7 +47,7 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
             <X size={24} />
           </button>
         </div>
-        <div className="mx-5 mb-5 px-6 sm:px-4 flex flex-col">
+        <div className="mx-5 mb-5  flex flex-col">
           <h2 className="text-primary text-2xl font-bold mb-6">
             {title}
           </h2>
@@ -71,7 +71,7 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
               </div>
             )}
           </div>
-          <div className="text-center mb-4">
+          <div className="mb-4">
             {hasDiscount ? (
               <p className="text-primary font-bold tracking-wide">
                 You save ${savedAmount.toFixed(2)}
@@ -103,14 +103,14 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
           <div className="w-full min-h-30 flex flex-col items-center justify-center bg-gray-50/50 rounded-3xl border border-dashed border-gray-200 p-4">
             {activeRedemptionTab === 'coupon' && (
               <div className="w-full animate-in fade-in slide-in-from-bottom-2">
-                <div className="bg-[#e6f7f8] border-2 border-[#4dbbc4]/30 rounded-2xl p-6 text-center">
+                <div className="bg-[#e6f7f8] border-2 border-[#4dbbc4]/30 rounded-2xl p-3 sm:p-6 text-center">
                   <span className="block text-xs text-primary font-bold mb-2 uppercase tracking-widest">Promo Code</span>
-                  <h3 className="text-4xl font-black text-gray-800 mb-5 tracking-tighter">
+                  <h3 className="text-xl sm:text-4xl font-black text-gray-800 mb-5 tracking-tighter">
                     {couponCode}
                   </h3>
                   <button
                     onClick={handleCopy}
-                    className={`flex items-center gap-2 mx-auto px-8 py-3 rounded-xl font-bold transition-all cursor-pointer ${copied ? 'bg-emerald-500 text-white' : 'bg-primary text-white hover:bg-secondary hover:shadow-md'
+                    className={`flex items-center gap-1 sm:gap-2 mx-auto px-2 sm:px-8 py-2.5 rounded-md font-bold transition-all cursor-pointer ${copied ? 'bg-emerald-500 text-white' : 'bg-primary text-white hover:bg-secondary hover:shadow-md'
                       }`}
                   >
                     {copied ? <Check size={20} /> : <Copy size={20} />}
@@ -156,7 +156,7 @@ const ShowCuponModal = ({ isOpen, setIsOpen, deal }) => {
           {/* Final Action */}
           <button
             onClick={() => setIsOpen(false)}
-            className="w-full bg-primary text-white cursor-pointer py-3 rounded-full font-black text-lg mt-8 mb-3 shadow-[0_10px_20px_-5px_rgba(77,187,196,0.4)] hover:shadow-[0_15px_25px_-5px_rgba(77,187,196,0.5)] active:scale-[0.98] transition-all">
+            className="w-full bg-primary text-white cursor-pointer py-2 sm:py-3 rounded-full font-black text-lg mt-8 mb-3 shadow-[0_10px_20px_-5px_rgba(77,187,196,0.4)] hover:shadow-[0_15px_25px_-5px_rgba(77,187,196,0.5)] active:scale-[0.98] transition-all">
             Close Deal
           </button>
         </div>

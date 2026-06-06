@@ -5,7 +5,7 @@ export const StatCardOne = ({ total_revenue }) => {
             <div>
                 <p className="text-xl font-medium text-gray-700">Total Revenue</p>
                 <h3 className="text-3xl font-bold mt-2">
-                    {String(total_revenue || 0).padStart(2, "0")}
+                    {String(total_revenue.toFixed(2) || 0).padStart(2, "0")}
                 </h3>
                 {/* <p className="text-base mt-1 font-medium"> <span className="text-[#34C759]">+12%</span> last month</p> */}
             </div>
@@ -22,7 +22,7 @@ export const StatCardTwo = ({ lastMonthRevenue }) => {
             <div>
                 <p className="text-xl font-medium">Last month revenue</p>
                 <h3 className="text-[32px] font-bold mt-1">
-                    {String(lastMonthRevenue || 0).padStart(2, "0")}
+                    {String(lastMonthRevenue?.toFixed(2) || 0).padStart(2, "0")}
                 </h3>
             </div>
             <div className="bg-[#0bebd1] p-4 rounded-md">

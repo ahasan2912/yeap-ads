@@ -93,6 +93,7 @@ export const dashboardHome = apiSlice.injectEndpoints({
                     credentials: "include",
                 };
             },
+            providesTags: ["Deals"],
         }),
     }),
 });

@@ -1,4 +1,4 @@
-import { Store } from "lucide-react";
+import { Ban, Store } from "lucide-react";
 import { Link } from "react-router-dom";
 import Countdown from "../../../../home/deals/Countdown";
 import { useHandleDeleteDealMutation } from "../../../../../features/deal/dealApi";
@@ -47,8 +47,9 @@ const DealCard = ({ deal }) => {
     const statusBadgeClasses = "rounded-full border border-[#BEE6C2] bg-[#F0F9FF] px-2.5 py-1 text-xs font-bold text-primary";
 
     return (
-        <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col lg:flex-row gap-4 lg:items-center mt-5 overflow-hidden">
-            <div className="w-full h-40 sm:h-48 lg:w-32 lg:h-24 rounded-lg overflow-hidden shrink-0">
+        <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row sm:items-center mt-5 gap-4 overflow-hidden">
+
+            <div className="w-full aspect-video sm:h-32 sm:w-44 md:h-36 md:w-56 lg:h-28 lg:w-40 xl:h-24 xl:w-32 rounded-lg overflow-hidden shrink-0">
                 <img
                     src={deal?.images?.[0]}
                     alt={deal?.title || "Deal"}
@@ -62,7 +63,7 @@ const DealCard = ({ deal }) => {
                     </h3>
                 </div>
 
-                <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                     <div className="min-w-0">
                         <div className="flex min-w-0 items-center gap-1 text-gray-400 text-sm">
                             <Store size={17} className="shrink-0" />
@@ -81,7 +82,18 @@ const DealCard = ({ deal }) => {
                                 )}
                             </div>
                             {
-                                activeDeal && <Countdown countdown={promotedUntil} />
+                                activeDeal && deal?.isBanned === false && <Countdown countdown={promotedUntil} />
+                            }
+                            {
+                                activeDeal && deal?.isBanned === true && (
+                                    <div className="group relative inline-flex max-w-full items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-2.5 py-1 text-xs font-bold text-red-600">
+                                        <Ban size={14} className="shrink-0" />
+                                        <span>Banned</span>
+                                        <span className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-max max-w-56 -translate-x-1/2 rounded-md bg-[#262626] px-3 py-2 text-center text-xs font-medium leading-5 text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100">
+                                            {deal?.ban_reason}
+                                        </span>
+                                    </div>
+                                )
                             }
                             {
                                 expiredDeal && <div className={statusBadgeClasses}>
