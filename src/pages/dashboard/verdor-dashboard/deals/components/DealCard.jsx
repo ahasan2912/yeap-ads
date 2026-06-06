@@ -219,3 +219,5 @@ const DealCard = ({ deal }) => {
 };
 
 export default DealCard;
+
+

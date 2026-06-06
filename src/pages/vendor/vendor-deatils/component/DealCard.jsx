@@ -29,7 +29,7 @@ const DealCard = ({ deal, shopName }) => {
                     <span className="shrink-0 opacity-70"><Store size={17} className="text-[#A3A3A3]" /></span>
                     <span className="min-w-0 truncate">{shopName || 'Zyz'}</span>
                 </div>
-                <div className="mt-3 flex min-w-0 flex-wrap items-start justify-between gap-2">
+                <div className="mt-3 flex min-w-0 flex-col items-start justify-between gap-2">
                     <div className="flex min-w-0 flex-wrap items-baseline gap-x-2 gap-y-0.5">
                         <span className="text-xl font-bold text-[#262626]">
                             ${finalPrice.toFixed(2)}

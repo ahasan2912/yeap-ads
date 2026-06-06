@@ -71,7 +71,6 @@ const EditOutlet = () => {
 
     const onSubmit = async (data) => {
         if (!id || !/^[0-9a-fA-F]{24}$/.test(id)) {
-            console.error("Invalid outlet id:", id);
             return;
         }
 

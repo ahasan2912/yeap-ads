@@ -16,7 +16,7 @@ const Countdown = ({ countdown, compact = false }) => {
 
   return (
     <div
-      className={`inline-flex max-w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-[#e6e2be] bg-[#fff9f0] font-bold leading-none text-primary shadow-sm mb-3 mt-4 ${badgeSizeClass}`}
+      className={`inline-flex max-w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-[#e6e2be] bg-[#fff9f0] font-bold leading-none text-primary shadow-sm mb-3 ${badgeSizeClass}`}
     >
       Expires {formatted}
     </div>
